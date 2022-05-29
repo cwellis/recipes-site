@@ -1,0 +1,15 @@
+.signIn {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 20px auto;
+  }
+
+.signIn input, .signIn button {
+    margin: 10px 0;
+    padding: 0.7rem;
+}
+
+.signIn button {
+    font-size: 1.3rem;
+}  
