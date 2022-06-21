@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 let Homepage = () => {
     return (
@@ -8,4 +8,4 @@ let Homepage = () => {
     )
 }
 
-export default Homepage
+export default Homepage;
