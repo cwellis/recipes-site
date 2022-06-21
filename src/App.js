@@ -24,7 +24,7 @@ function App() {
 
         <Routes>
           <Route path='/' element={<Homepage />} />
-          {/* <Route path='/Addrecipe' element={<Addrecipe />} /> */}
+          <Route path='/Addrecipe' element={<Addrecipe />} />
         </Routes>
 
       </BrowserRouter>
