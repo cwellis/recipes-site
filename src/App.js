@@ -5,7 +5,7 @@ import { BrowserRouter, Link, Navigate, Route, Routes } from 'react-router-dom';
 
 // components/ pages
 import Homepage from './components/Homepage';
-import Addrecipe from './components/AddRecipe';
+import Addrecipe from './components/Addrecipe';
 
 function App() {
   return (
