@@ -1,0 +1,36 @@
+.signUp {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 20px auto;
+  }
+  
+  .signUp input, .signUp button {
+    margin: 10px 0;
+    padding: 0.7rem;
+  }
+
+  .signUp button {
+    font-size: 1.3rem;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .show {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    color: black;
+    border: 2px solid black;
+    background-color: red;
+  }
+
+  .register {
+    font-size: 2rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    margin: 2rem;
+  }
