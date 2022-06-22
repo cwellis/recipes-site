@@ -1,0 +1,17 @@
+.app {
+    display: flex;
+    flex-direction: column;
+}
+
+.textarea {
+    width: 50%;
+    padding: 20px;
+    font-size: 2rem;
+    outline: none;
+}
+
+.markdown {
+    width: 50%;
+    padding: 20px;
+    outline: none;
+}
