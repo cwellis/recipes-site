@@ -6,6 +6,7 @@ import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 // components/ pages
 import Homepage from './components/Homepage';
 import Addrecipe from './components/Addrecipe';
+import Markdown from './components/Markdown';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Homepage />} />
           <Route path='/Addrecipe' element={<Addrecipe />} />
+          <Route path='/Markdown' element={<Markdown />} />
         </Routes>
 
       </BrowserRouter>
