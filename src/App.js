@@ -7,6 +7,8 @@ import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import Homepage from './components/Homepage';
 import Addrecipe from './components/Addrecipe';
 import Markdown from './components/Markdown';
+import SignUp from './components/forms/SignUpForm';
+import SignIn from './components/forms/SignInForm'
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
           <Route path='/' element={<Homepage />} />
           <Route path='/Addrecipe' element={<Addrecipe />} />
           <Route path='/Markdown' element={<Markdown />} />
+          <Route path='/SignUp' element={<SignUp />} />
+          <Route path='/SignIn' element={<SignIn />} />
         </Routes>
 
       </BrowserRouter>
