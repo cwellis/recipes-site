@@ -15,7 +15,7 @@ app.use(express.json())
 
 app.post("/createrecipe", (req, res) => {
     console.log(req.body)
-    
+    // take the response body and save it to mongoDB
 })
 
 app.listen(PORT, () => { console.log(`http://localhost:${PORT}`)})
