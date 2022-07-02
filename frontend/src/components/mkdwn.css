@@ -1,0 +1,38 @@
+.app {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin: 30px 0 0 0;
+}
+
+.textarea {
+    width: 40%;
+    height: 100vh;
+    padding: 20px;
+    font-size: 1.1rem;
+    outline: 3px solid #B9B9B9;
+    box-shadow: 0 0 3px 6px rgba(0, 0, 0, 0.16);
+    border-radius: 5px;
+    border: none;
+    resize: none;
+}
+
+.markdown {
+    width: 40%;
+    height: 100vh;
+    padding: 20px;
+    font-size: 1.1rem;
+    outline: 3px solid #B9B9B9;
+    box-shadow: 0 0 3px 6px rgba(0, 0, 0, 0.16);
+    border-radius: 5px;
+}
+
+.btn {
+    font-size: 2rem;
+}
+
+.btn-pos {
+    display: flex;
+    justify-content: end;
+    margin: 20px 32px 0 0;
+}
