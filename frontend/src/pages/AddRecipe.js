@@ -6,7 +6,7 @@ import RecipeDetails from '../components/RecipeDetails'
 import RecipeForm from '../components/RecipeForm'
 import { useRecipesContext } from '../hooks/useRecipesContext'
 
-const Home = () => {
+const AddRecipe = () => {
     const {recipes, dispatch} = useRecipesContext()
 
     useEffect(() => {
@@ -15,7 +15,7 @@ const Home = () => {
             const json = await response.json()
 
             if (response.ok) {
-                dispatch({type: 'SET_recipeS', payload: json})
+                dispatch({type: 'SET_RECIPES', payload: json})
             }
         }
 
@@ -23,15 +23,10 @@ const Home = () => {
     }, [dispatch])
 
     return (
-       <div className="home">
-        <div className="recipes">
-            {recipes && recipes.map((recipe) => (
-                <RecipeDetails key={recipe._id} recipe={recipe} />
-            ))}
-        </div>
-        <RecipeForm />
-       </div> 
-    )
+        <div className="home">
+         <RecipeForm />
+        </div> 
+     )
 }
 
-export default Home
+export default AddRecipe

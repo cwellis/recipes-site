@@ -29,8 +29,10 @@ const RecipeDetails = ({ recipe }) => {
     return (
         <div className="recipe-details">
             <h4>{recipe.title}</h4>
-            <p><strong>Load (lb)</strong>{recipe.load}</p>
-            <p><strong>Reps</strong>{recipe.reps}</p>
+            <p><strong>Prep Time: </strong>{recipe.prepTime}</p>
+            <p><strong>Cook Time: </strong>{recipe.cookTime}</p>
+            <p><strong>Ingredients: </strong>{recipe.ingredients}</p>
+            <p><strong>Instructions: </strong>{recipe.instructions}</p>
             <span className='material-symbols-outlined' onClick={checkClick}>delete</span>
         </div>
     )
