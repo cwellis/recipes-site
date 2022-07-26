@@ -1,32 +1,34 @@
-require('dotenv').config()
+const path = require('path');
+const express = require('express');
+const colors = require('colors');
+const dotenv = require('dotenv').config();
+const { errorHandler } = require('./middleware/errorMiddleware');
+const connectDB = require('./config/db');
+const port = process.env.PORT || 5000;
 
-const express = require('express')
-const mongoose = require('mongoose')
-const recipeRoutes = require('./routes/recipes')
+connectDB();
 
-// express app
-const app = express()
+const app = express();
 
-// middleware
-app.use(express.json())
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-app.use((req, res, next) => {
-    console.log(req.path, req.method)
-    next()
-})
+app.use('/api/recipes', require('./routes/recipeRoutes'));
+app.use('/api/users', require('./routes/userRoutes'));
 
-// routes
-app.use('/api/recipes', recipeRoutes)
+// Serve frontend
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../frontend/build')));
 
-// connect to db
-mongoose.connect(process.env.MONGO_URI)
-    .then(() => {
-        app.listen(process.env.PORT, () => {
-            console.log(`Connected to db and listening on port ${process.env.PORT}`)
-        })
-    })
-    .catch((error) => {
-        console.log(error)
-    })
+  app.get('*', (req, res) =>
+    res.sendFile(
+      path.resolve(__dirname, '../', 'frontend', 'build', 'index.html')
+    )
+  );
+} else {
+  app.get('/', (req, res) => res.send('Please set to production'));
+}
 
-// listen for requests
+app.use(errorHandler);
+
+app.listen(port, () => console.log(`Server started on port ${port}`));

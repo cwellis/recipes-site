@@ -1,89 +1,99 @@
+const asyncHandler = require('express-async-handler')
+
 const Recipe = require('../models/recipeModel')
-const mongoose = require('mongoose')
+const User = require('../models/userModel')
 
-// get all recipes
-const getRecipes = async (req, res) => {
-    const recipes = await Recipe.find({}).sort({createdAt: -1})
+// @desc    Get recipes
+// @route   GET /api/recipes
+// @access  Private
+const getRecipes = asyncHandler(async (req, res) => {
+  const recipes = await Recipe.find({ user: req.user.id })
 
-    res.status(200).json(recipes)
-}
+  res.status(200).json(recipes)
+})
 
-// get a single recipe
-const getRecipe = async (req, res) => {
-    const { id } = req.params
+// @desc    Set recipe
+// @route   POST /api/recipes
+// @access  Private
+const setRecipe = asyncHandler(async (req, res) => {
+  if (!req.body.title || !req.body.prepTime || !req.body.cookTime || !req.body.ingredients || !req.body.instructions) {
+    res.status(400)
+    throw new Error('Please enter all fields')
+  }
 
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).json({error : 'No such recipe'})
-    }
+  const recipe = await Recipe.create({
+    title: req.body.title,
+    prepTime: req.body.prepTime,
+    cookTime: req.body.cookTime,
+    ingredients: req.body.ingredients,
+    instructions: req.body.instructions,
+    user: req.user.id,
+  })
 
-    const recipe = await Recipe.findById(id)
+  res.status(200).json(recipe)
+})
 
-    if (!recipe) {
-        return res.status(404).json({error: 'No such recipe'})
-    }
+// @desc    Update recipe
+// @route   PUT /api/recipes/:id
+// @access  Private
+const updateRecipe = asyncHandler(async (req, res) => {
+  const recipe = await Recipe.findById(req.params.id)
 
-    res.status(200).json(recipe)
-}
+  if (!recipe) {
+    res.status(400)
+    throw new Error('Recipe not found')
+  }
 
-// create new recipe
-const createRecipe = async (req, res) => {
-    const { title, prepTime, cookTime, ingredients, instructions } = req.body
+  // Check for user
+  if (!req.user) {
+    res.status(401)
+    throw new Error('User not found')
+  }
 
-    let emptyFields = []
+  // Make sure the logged in user matches the recipe user
+  if (recipe.user.toString() !== req.user.id) {
+    res.status(401)
+    throw new Error('User not authorized')
+  }
 
-    if (emptyFields.length > 0) {
-        return res.status(400).json({ error: 'Please fill in all the fields', emptyFields })
-    }
+  const updatedRecipe = await Recipe.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+  })
 
-    // add doc to db
-    try {
-        const recipe = await Recipe.create({ title, prepTime, cookTime, ingredients, instructions })
-        res.status(200).json(recipe)
-    } catch (error) {
-        res.status(400).json({error: error.message})
-    }
-}
+  res.status(200).json(updatedRecipe)
+})
 
-// delete a recipe
-const deleteRecipe = async (req, res) => {
-    const { id } = req.params
+// @desc    Delete recipe
+// @route   DELETE /api/recipes/:id
+// @access  Private
+const deleteRecipe = asyncHandler(async (req, res) => {
+  const recipe = await Recipe.findById(req.params.id)
 
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).json({error: 'No such recipe'})
-    }
+  if (!recipe) {
+    res.status(400)
+    throw new Error('Recipe not found')
+  }
 
-    const recipe = await Recipe.findOneAndDelete({_id: id})
+  // Check for user
+  if (!req.user) {
+    res.status(401)
+    throw new Error('User not found')
+  }
 
-    if (!recipe) {
-        return res.status(400).json({error: 'No such recipe'})
-    }
+  // Make sure the logged in user matches the recipe user
+  if (recipe.user.toString() !== req.user.id) {
+    res.status(401)
+    throw new Error('User not authorized')
+  }
 
-    res.status(200).json(recipe)
-}
+  await recipe.remove()
 
-// update a recipe
-const updateRecipe = async (req, res) => {
-    const { id } = req.params
-
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(400).json({error: 'No such recipe'})
-    }
-
-    const recipe = await Recipe.findOneAndUpdate({_id: id}, {
-        ...req.body
-    })
-
-    if (!workout) {
-        return res.status(400).json({error: 'No such recipe'})
-    }
-
-    res.status(200).json(recipe)
-}
+  res.status(200).json({ id: req.params.id })
+})
 
 module.exports = {
-    createRecipe,
-    getRecipes,
-    getRecipe,
-    deleteRecipe,
-    updateRecipe
+  getRecipes,
+  setRecipe,
+  updateRecipe,
+  deleteRecipe,
 }
