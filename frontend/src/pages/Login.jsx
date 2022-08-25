@@ -11,6 +11,12 @@ function Login() {
         email: '',
         password: '',
     })
+
+    const [visible, setVisible] = useState(true)
+
+    let handleVis = () => {
+        visible === true ? setVisible(false) : setVisible(true)
+    }
     
     const { email, password } = formData
 
@@ -71,7 +77,10 @@ function Login() {
                     </div>
 
                     <div className="form-group">
-                        <input type="text" className='form-control' id='password' name='password' value={password} placeholder='Enter Password' onChange={onChange} />
+                        <input type={visible ? "password" : "text"} className='form-control' id='password' name='password' value={password} placeholder='Enter Password' onChange={onChange} />
+                        <button type='button' className='btn btn-block' onClick={handleVis}>
+                            View Password
+                        </button>
                     </div>
                     
                     <div className="form-group">
