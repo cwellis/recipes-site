@@ -13,6 +13,12 @@ function Register() {
         password: '',
         password2: ''
     })
+
+    const [visible, setVisible] = useState(true)
+
+    let handleVis = () => {
+        visible === true ? setVisible(false) : setVisible(true)
+    }
     
     const { name, email, password, password2 } = formData
 
@@ -79,10 +85,16 @@ function Register() {
                         <input type="text" className='form-control' id='email' name='email' value={email} placeholder='Enter Email' onChange={onChange} />
                     </div>
                     <div className="form-group">
-                        <input type="text" className='form-control' id='password' name='password' value={password} placeholder='Enter Password' onChange={onChange} />
+                        <input type={visible ? "password" : "text"} className='form-control' id='password' name='password' value={password} placeholder='Enter Password' onChange={onChange} />
+                        <button type='button' className='btn btn-block' onClick={handleVis}>
+                            View Password
+                        </button>
                     </div>
                     <div className="form-group">
-                        <input type="text" className='form-control' id='password2' name='password2' value={password2} placeholder='Confirm Password' onChange={onChange} />
+                        <input type={visible ? "password" : "text"} className='form-control' id='password2' name='password2' value={password2} placeholder='Confirm Password' onChange={onChange} />
+                        <button type='button' className='btn btn-block' onClick={handleVis}>
+                            View Password
+                        </button>
                     </div>
                     <div className="form-group">
                         <button type="submit" className='btn btn-block'>Submit</button>
