@@ -15,9 +15,14 @@ function Register() {
     })
 
     const [visible, setVisible] = useState(true)
+    const [confirmVis, setConfirmVis] = useState(true)
 
     let handleVis = () => {
         visible === true ? setVisible(false) : setVisible(true)
+    }
+
+    let handleConfirmVis = () => {
+        confirmVis === true ? setConfirmVis(false) : setConfirmVis(true)
     }
     
     const { name, email, password, password2 } = formData
@@ -79,25 +84,67 @@ function Register() {
             <section className="form">
                 <form onSubmit={onSubmit}>
                     <div className="form-group">
-                        <input type="text" className='form-control' id='name' name='name' value={name} placeholder='Enter Name' onChange={onChange} />
+                        <input 
+                            type="text" 
+                            className='form-control' 
+                            id='name' 
+                            name='name' 
+                            value={name} 
+                            placeholder='Enter Name' 
+                            onChange={onChange} 
+                        />
                     </div>
                     <div className="form-group">
-                        <input type="text" className='form-control' id='email' name='email' value={email} placeholder='Enter Email' onChange={onChange} />
+                        <input 
+                            type="text" 
+                            className='form-control' 
+                            id='email' 
+                            name='email' 
+                            value={email} 
+                            placeholder='Enter Email' 
+                            onChange={onChange} 
+                        />
                     </div>
                     <div className="form-group buttonIn">
-                        <input type={visible ? "password" : "text"} className='form-control' id='password' name='password' value={password} placeholder='Enter Password' onChange={onChange} />
-                        <button type='button' className='viewBtn' onClick={handleVis}>
+                        <input 
+                            type={visible ? "password" : "text"} className='form-control' id='password' name='password' 
+                            value={password} 
+                            placeholder='Enter Password' 
+                            onChange={onChange} 
+                        />
+                        <button 
+                            type='button' 
+                            className='viewBtn' 
+                            onClick={handleVis}
+                        >
                             {visible ? "View" : "Hide"}
                         </button>
                     </div>
+
                     <div className="form-group buttonIn">
-                        <input type={visible ? "password" : "text"} className='form-control' id='password2' name='password2' value={password2} placeholder='Confirm Password' onChange={onChange} />
-                        <button type='button' className='viewBtn' onClick={handleVis}>
-                            {visible ? "View" : "Hide"}
+                        <input 
+                            type={ confirmVis ? "password" : "text" } className='form-control' 
+                            id='password2' 
+                            name='password2' 
+                            value={password2} 
+                            placeholder='Confirm Password' 
+                            onChange={onChange} 
+                        />
+
+                        <button 
+                            type='button' 
+                            className='viewBtn' 
+                            onClick={handleConfirmVis}
+                        >
+                            { confirmVis ? "View" : "Hide" }
                         </button>
                     </div>
                     <div className="form-group">
-                        <button type="submit" className='btn btn-block'>Submit</button>
+                        <button 
+                            type="submit" 
+                            className='btn btn-block'>
+                                Submit
+                            </button>
                     </div>
                 </form>
             </section>
