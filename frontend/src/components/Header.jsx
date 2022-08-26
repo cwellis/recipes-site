@@ -12,7 +12,7 @@ function Header() {
     const onLogout = () => {
         dispatch(logout())
         dispatch(reset())
-        navigate('/')
+        navigate('/login')
     }
 
   return (
@@ -29,6 +29,15 @@ function Header() {
                         <button className='btn'>
                             <Link to ='/recipes' className='white'>
                                 <FaPen /> Recipes
+                            </Link>
+                        </button>
+
+                    </li>
+
+                    <li>
+                        <button className='btn'>
+                            <Link to ='/dashboard' className='white'>
+                                <FaPen /> Dashboard
                             </Link>
                         </button>
 
