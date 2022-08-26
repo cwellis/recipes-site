@@ -79,7 +79,7 @@ function Login() {
                     <div className="form-group buttonIn">
                         <input type={visible ? "password" : "text"} className='form-control' id='password' name='password' value={password} placeholder='Enter Password' onChange={onChange} />
                         <button type='button' className='viewBtn' onClick={handleVis}>
-                            {visible ? "View Password" : "Hide Password"}
+                            {visible ? "View" : "Hide"}
                         </button>
                     </div>
                     
