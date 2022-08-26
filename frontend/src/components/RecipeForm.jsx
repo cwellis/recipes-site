@@ -12,7 +12,7 @@ function RecipeForm() {
 
     const dispatch = useDispatch()
 
-    const onSubmit = e => {
+    const onSubmit = (e) => {
         e.preventDefault()
 
         dispatch(createRecipe({title, prepTime, cookTime, ingredients, instructions}))

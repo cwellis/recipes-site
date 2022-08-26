@@ -6,7 +6,7 @@ import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Recipes from './pages/Recipes';
-import Home from './pages/Home';
+import Home from './pages/Home/Home';
 
 function App() {
   return (
