@@ -1,7 +1,11 @@
 import { Modal, useMantineTheme } from '@mantine/core';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { updateRecipe } from '../../features/recipes/recipeSlice'
 
-let RecipeModal = ({modalOpened, setModalOpened}) => {
-  const theme = useMantineTheme();
+const RecipeModal = ({modalOpened, setModalOpened, recipe}) => {
+
+    const theme = useMantineTheme();
 
   return (
     <Modal
@@ -45,7 +49,9 @@ let RecipeModal = ({modalOpened, setModalOpened}) => {
             placeholder='Instructions'
         />
 
-        <button className='btn'>
+        <button 
+            className='btn'
+        >
             Update Recipe
         </button>
 

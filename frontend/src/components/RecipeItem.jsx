@@ -3,8 +3,9 @@ import { useDispatch } from 'react-redux'
 import { deleteRecipe } from '../features/recipes/recipeSlice'
 import RecipeModal from './RecipeModal/RecipeModal'
 
-function RecipeItem({ recipe }) {
+const RecipeItem = ({ recipe }) => {
   const dispatch = useDispatch()
+  
 
   const [modalOpened, setModalOpened] = useState(false)
 
@@ -23,7 +24,7 @@ function RecipeItem({ recipe }) {
 
       <button
         className='btn'
-        onClick={() => setModalOpened(true)}
+        onClick={()=>console.log(recipe._id, recipe.title)}
       >
         Update Recipe
       </button>
