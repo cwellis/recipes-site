@@ -245,3 +245,7 @@ h3 {
 .viewBtn:hover {
   transform: scale(0.98);
 }
+
+.hidden {
+  display: none !important;
+}
