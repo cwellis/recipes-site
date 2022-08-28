@@ -10,8 +10,13 @@ function Dashboard() {
   const dispatch = useDispatch()
 
   const { user } = useSelector((state) => state.auth)
+  const { recipes, isLoading, isError, message } = useSelector((state) => state.recipes)
 
   useEffect(() => {
+
+    if (isError) {
+      console.log(message)
+    }
 
     if (!user) {
       navigate('/login')

@@ -1,9 +1,40 @@
 import RecipeItem from "../components/RecipeItem"
-import { useSelector } from 'react-redux'
-function Recipes() {
-    const { recipes } = useSelector(
-        (state) => state.recipes
-      )
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+import { getRecipes } from "../features/recipes/recipeSlice"
+import { reset } from "../features/auth/authSlice"
+
+let Recipes = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  
+  const { user } = useSelector((state) => state.auth)
+  const { recipes, isError, message } = useSelector(
+    (state) => state.recipes
+  )
+
+
+  useEffect(() => {
+
+    if (isError) {
+      console.log(message)
+    }
+
+    if (!user) {
+      navigate('/login')
+    }
+
+    dispatch(getRecipes())
+
+    return () => {
+      dispatch(reset())
+    }
+  }, [user, navigate, dispatch])
+
+
+
 
   return (
     <section className='content'>
