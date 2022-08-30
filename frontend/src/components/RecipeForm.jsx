@@ -1,5 +1,7 @@
+import { useEffect } from 'react'
 import {useState} from 'react'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
+import { toast } from 'react-toastify'
 import {createRecipe} from '../features/recipes/recipeSlice'
 
 function RecipeForm() {
@@ -11,6 +13,14 @@ function RecipeForm() {
     const [instructions, setInstructions] = useState('')
 
     const dispatch = useDispatch()
+
+    const { user, isError, isSuccess, message } = useSelector(
+        (state) => state.auth
+    )
+
+    const checkFields = () => {
+        
+    }
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -37,6 +47,9 @@ function RecipeForm() {
                     value={title} 
                     onChange={(e) => setTitle(e.target.value)} 
                 />
+                <div className='hidden'>
+                    Please Enter Recipe Name
+                </div>
             </div>
 
             <div className="form-group">
@@ -48,6 +61,9 @@ function RecipeForm() {
                     value={prepTime} 
                     onChange={(e) => setPrepTime(e.target.value)} 
                 />
+                <div className='hidden'>
+                    Please Enter Prep Time
+                </div>
             </div>
             
             <div className="form-group">
@@ -59,6 +75,9 @@ function RecipeForm() {
                     value={cookTime} 
                     onChange={(e) => setCookTime(e.target.value)} 
                 />
+                <div className='hidden'>
+                    Please Enter Cook Time
+                </div>
             </div>
 
             <div className="form-group">
@@ -70,6 +89,9 @@ function RecipeForm() {
                     value={ingredients} 
                     onChange={(e) => setIngredients(e.target.value)} 
                 />
+                <div className='hidden'>
+                    Please Enter Ingredients
+                </div>
             </div>
 
             <div className="form-group">
@@ -81,10 +103,13 @@ function RecipeForm() {
                     value={instructions} 
                     onChange={(e) => setInstructions(e.target.value)} 
                 />
+                <div className='hidden'>
+                    Please Enter Instructions
+                </div>
             </div>
 
             <div className="form-group">
-                <button className="btn btn-block" type='submit'>
+                <button onClick={checkFields} className="btn btn-block" type='submit'>
                     Add Recipe
                 </button>
             </div>

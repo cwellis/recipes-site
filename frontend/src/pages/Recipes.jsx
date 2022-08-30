@@ -4,6 +4,7 @@ import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { getRecipes } from "../features/recipes/recipeSlice"
 import { reset } from "../features/auth/authSlice"
+import Spinner from "../components/Spinner/Spinner"
 
 let Recipes = () => {
   const dispatch = useDispatch()
@@ -11,7 +12,7 @@ let Recipes = () => {
 
   
   const { user } = useSelector((state) => state.auth)
-  const { recipes, isError, message } = useSelector(
+  const { recipes, isLoading, isError, message } = useSelector(
     (state) => state.recipes
   )
 
@@ -31,9 +32,11 @@ let Recipes = () => {
     return () => {
       dispatch(reset())
     }
-  }, [user, navigate, dispatch])
+  }, [user, navigate, isError, message, dispatch])
 
-
+  if (isLoading) {
+    return <Spinner />
+  }
 
 
   return (

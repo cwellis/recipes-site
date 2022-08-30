@@ -4,13 +4,15 @@ import { useSelector, useDispatch } from 'react-redux'
 import RecipeForm from '../components/RecipeForm'
 import { getRecipes } from '../features/recipes/recipeSlice'
 import { reset } from '../features/auth/authSlice'
+import Spinner from '../components/Spinner/Spinner'
 
 function Dashboard() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const { user } = useSelector((state) => state.auth)
-  const { recipes, isLoading, isError, message } = useSelector((state) => state.recipes)
+
+  const { isLoading, isError, message } = useSelector((state) => state.recipes)
 
   useEffect(() => {
 
@@ -28,6 +30,10 @@ function Dashboard() {
       dispatch(reset())
     }
   }, [user, navigate, dispatch])
+
+  if (isLoading) {
+    return <Spinner />
+  }
 
 
   return (

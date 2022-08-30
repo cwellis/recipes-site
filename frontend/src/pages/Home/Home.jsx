@@ -4,6 +4,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getRecipes } from '../../features/recipes/recipeSlice'
 import { reset } from '../../features/auth/authSlice'
 import ProfileSide from "../../components/ProfileSide/ProfileSide"
+import HomeMiddle from '../../components/HomeMiddle/HomeMiddle'
+import HomeRightSide from '../../components/HomeRightSide/HomeRightSide'
+import './Home.css'
 
 const Home = () => {
 
@@ -28,6 +31,8 @@ const Home = () => {
     return (
         <div className="home">
             <ProfileSide />
+            <HomeMiddle />
+            <HomeRightSide />
         </div>
     )
 }
