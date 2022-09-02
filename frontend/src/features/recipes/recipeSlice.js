@@ -50,10 +50,16 @@ export const getRecipes = createAsyncThunk(
 // Update user recipe
 export const updateRecipe = createAsyncThunk(
   'recipes/update',
-  async (id, thunkAPI) => {
+  async (recipeData, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token
-      return await recipeService.updateRecipe(id, token)
+      return await recipeService.updateRecipe( recipeData.id, { 
+        title: recipeData.title,
+        prepTime: recipeData.prepTime,
+        cookTime: recipeData.cookTime,
+        ingredients: recipeData.ingredients,
+        instructions: recipeData.instructions
+       }, token )
     } catch (error) {
       const message = 
         (error.response && 
@@ -130,6 +136,22 @@ export const recipeSlice = createSlice({
         )
       })
       .addCase(deleteRecipe.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+      })
+      .addCase(updateRecipe.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(updateRecipe.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.recipes = state.recipes.map(recipe => {
+          return recipe._id === action.payload._id ? action.payload : recipe
+        })
+        state.recipes = state.recipes.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt))
+      })
+      .addCase(updateRecipe.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
         state.message = action.payload

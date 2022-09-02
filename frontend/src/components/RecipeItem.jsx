@@ -2,15 +2,21 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { deleteRecipe } from '../features/recipes/recipeSlice'
 import RecipeModal from './RecipeModal/RecipeModal'
+import { updateRecipe } from '../features/recipes/recipeSlice'
 
 const RecipeItem = ({ recipe }) => {
   const dispatch = useDispatch()
-  
+
+  const [title, setTitle] = useState('')
 
   const [modalOpened, setModalOpened] = useState(false)
 
   const handleDelete = () => {
     window.confirm("Delete?") ? dispatch(deleteRecipe(recipe._id)) : console.log('')
+  }
+
+  const handleUpdate = () => {
+    setModalOpened(true)
   }
 
   return (
@@ -24,7 +30,7 @@ const RecipeItem = ({ recipe }) => {
 
       <button
         className='btn'
-        onClick={()=>console.log(recipe._id, recipe.title)}
+        onClick={handleUpdate}
       >
         Update Recipe
       </button>
@@ -32,6 +38,7 @@ const RecipeItem = ({ recipe }) => {
       <RecipeModal
         modalOpened={modalOpened}
         setModalOpened={setModalOpened}
+        recipe={recipe}
       />
 
       <button 

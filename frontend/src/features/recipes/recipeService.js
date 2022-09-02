@@ -29,14 +29,14 @@ const getRecipes = async (token) => {
 }
 
 // Update user recipe
-const updateRecipe = async (recipeId, token) => {
+const updateRecipe = async (recipeId, recipeData, token) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   }
 
-  const response = await axios.update(API_URL + recipeId, config)
+  const response = await axios.put(API_URL + recipeId, recipeData, config)
 
   return response.data
 }

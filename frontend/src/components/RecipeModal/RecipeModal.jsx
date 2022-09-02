@@ -1,13 +1,40 @@
 import { Modal, useMantineTheme } from '@mantine/core';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateRecipe } from '../../features/recipes/recipeSlice'
 
-const RecipeModal = ({modalOpened, setModalOpened, recipe}) => {
+const RecipeModal = ({ recipe, modalOpened, setModalOpened }) => {
 
+    const dispatch = useDispatch()
     const theme = useMantineTheme();
 
-  return (
+    const [title, setTitle] = useState(recipe.title)
+    const [prepTime, setPrepTime] = useState(recipe.prepTime)
+    const [cookTime, setCookTime] = useState(recipe.cookTime)
+    const [ingredients, setIngredients] = useState(recipe.ingredients)
+    const [instructions, setInstructions] = useState(recipe.instructions)
+
+    const { isError, message } = useSelector(
+      (state) => state.recipes
+    )
+
+    useEffect(() => {
+
+      if (isError) {
+        console.log(message)
+      }
+      
+    }, [isError, message, dispatch])
+    
+    const onSubmit = (e) => {
+      e.preventDefault()
+
+      dispatch(updateRecipe({ id: recipe._id, title, prepTime, cookTime, ingredients, instructions }))
+
+      setModalOpened(false)
+    }
+
+    return (
     <Modal
       overlayColor={theme.colorScheme === 'dark' ? theme.colors.dark[9] : theme.colors.gray[2]}
       overlayOpacity={0.55}
@@ -16,37 +43,44 @@ const RecipeModal = ({modalOpened, setModalOpened, recipe}) => {
       opened={modalOpened}
       onClose={()=>setModalOpened(false)}
     >
-      <form className='form-group'>
+      <form onSubmit={ onSubmit } className='form-group'>
         <h3>Update Recipe</h3>
 
+        <h2></h2>
+
         <input 
-            type="text" 
+            type="text"
             name='title'
-            placeholder='Title'
+            placeholder={title}
+            onChange={(e) => setTitle(e.target.value)} 
         />
 
         <input 
             type="text" 
             name='prepTime'
-            placeholder='Prep Time'
+            placeholder={prepTime}
+            onChange={(e) => setPrepTime(e.target.value)} 
         />
 
         <input 
             type="text" 
             name='cookTime'
-            placeholder='Cook Time'
+            placeholder={cookTime}
+            onChange={(e) => setCookTime(e.target.value)} 
         />
 
         <input 
             type="text" 
             name='ingredients'
-            placeholder='Ingredients'
+            placeholder={ingredients}
+            onChange={(e) => setIngredients(e.target.value)} 
         />
 
         <input 
             type="text" 
             name='instructions'
-            placeholder='Instructions'
+            placeholder={instructions}
+            onChange={(e) => setInstructions(e.target.value)} 
         />
 
         <button 

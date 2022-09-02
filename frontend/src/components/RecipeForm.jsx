@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import {useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { toast } from 'react-toastify'
@@ -6,21 +5,17 @@ import {createRecipe} from '../features/recipes/recipeSlice'
 
 function RecipeForm() {
 
+    const dispatch = useDispatch()
+
     const [title, setTitle] = useState('')
     const [prepTime, setPrepTime] = useState('')
     const [cookTime, setCookTime] = useState('')
     const [ingredients, setIngredients] = useState('')
     const [instructions, setInstructions] = useState('')
 
-    const dispatch = useDispatch()
-
-    const { user, isError, isSuccess, message } = useSelector(
+    const { isError, message } = useSelector(
         (state) => state.auth
     )
-
-    const checkFields = () => {
-        
-    }
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -109,7 +104,7 @@ function RecipeForm() {
             </div>
 
             <div className="form-group">
-                <button onClick={checkFields} className="btn btn-block" type='submit'>
+                <button className="btn btn-block" type='submit'>
                     Add Recipe
                 </button>
             </div>
