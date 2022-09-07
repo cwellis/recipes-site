@@ -4,6 +4,7 @@ import './ProfileCard.css'
 const ProfileCard = () => {
 
     const { user } = useSelector((state) => state.auth)
+    console.log(user)
 
     return (
         <div className="profileCard">
@@ -13,7 +14,7 @@ const ProfileCard = () => {
             </div>
             
             <div className="profileName">
-                <h1>{user.name}</h1>
+                <h1>{user ? user.name : null}</h1>
             </div>
 
         </div>

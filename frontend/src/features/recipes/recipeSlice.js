@@ -95,7 +95,7 @@ export const recipeSlice = createSlice({
   name: 'recipe',
   initialState,
   reducers: {
-    reset: (state) => initialState,
+    reset: () => initialState,
   },
   extraReducers: (builder) => {
     builder
@@ -149,7 +149,6 @@ export const recipeSlice = createSlice({
         state.recipes = state.recipes.map(recipe => {
           return recipe._id === action.payload._id ? action.payload : recipe
         })
-        state.recipes = state.recipes.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt))
       })
       .addCase(updateRecipe.rejected, (state, action) => {
         state.isLoading = false
