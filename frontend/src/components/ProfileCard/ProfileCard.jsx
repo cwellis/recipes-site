@@ -4,7 +4,6 @@ import './ProfileCard.css'
 const ProfileCard = () => {
 
     const { user } = useSelector((state) => state.auth)
-    console.log(user)
 
     return (
         <div className="profileCard">

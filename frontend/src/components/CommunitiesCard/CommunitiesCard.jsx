@@ -35,15 +35,23 @@ let CommunitiesCard = () => {
     return (
         <div>
 
+          <div>
             {communities.length > 0 ? (
-                <div>
-                    {communities.map((community) => (
-                        <CommunityItem key={community._id} community={community} />
-                    ))}
-                </div>
-            ) : (
-                <h3>You have not joined any communities yet</h3>
-            )}
+                  <div>
+                      {communities.map((community) => (
+                          <CommunityItem key={community._id} community={community} />
+                      ))}
+                  </div>
+              ) : (
+                  <h3>You have not joined any communities yet</h3>
+              )}
+          </div>
+
+          <div >
+            View All
+          </div>
+
+            
 
         </div>
     )

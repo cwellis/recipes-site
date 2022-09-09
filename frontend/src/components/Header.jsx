@@ -1,4 +1,5 @@
 import { FaSignInAlt, FaSignOutAlt, FaUser, FaPen } from 'react-icons/fa'
+import { BsFillPeopleFill } from 'react-icons/bs'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout, reset } from '../features/auth/authSlice'
@@ -31,6 +32,15 @@ function Header() {
                         <button className='btn'>
                             <Link to ='/recipes' className='white'>
                                 <FaPen /> Recipes
+                            </Link>
+                        </button>
+
+                    </li>
+
+                    <li>
+                        <button className='btn'>
+                            <Link to ='/communities' className='white'>
+                                <BsFillPeopleFill /> Communities
                             </Link>
                         </button>
 

@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import { toast } from 'react-toastify'
 import {createRecipe} from '../features/recipes/recipeSlice'
 
-function RecipeForm() {
+let RecipeForm = () => {
 
     const dispatch = useDispatch()
 
@@ -104,7 +104,10 @@ function RecipeForm() {
             </div>
 
             <div className="form-group">
-                <button className="btn btn-block" type='submit'>
+                <button 
+                    className="btn btn-block" 
+                    type='submit'
+                >
                     Add Recipe
                 </button>
             </div>
