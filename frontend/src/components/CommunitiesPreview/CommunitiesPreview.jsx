@@ -1,4 +1,4 @@
-import './CommunitiesCard.css'
+import './CommunitiesPreview.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from "react"
 import { reset } from "../../features/auth/authSlice"
@@ -8,7 +8,7 @@ import CommunityItem from '../CommunityItem/CommunityItem'
 
 
 
-let CommunitiesCard = () => {
+let CommunitiesPreview = () => {
 
     const dispatch = useDispatch()
 
@@ -38,11 +38,8 @@ let CommunitiesCard = () => {
           <div>
             {communities.length > 0 ? (
                   <div>
-                      {communities.map((community) => (
-                          <CommunityItem 
-                            key={community._id} 
-                            community={community} 
-                          />
+                      {communities.slice(0, 3).map((community) => (
+                          <CommunityItem key={community._id} community={community} />
                       ))}
                   </div>
               ) : (
@@ -60,4 +57,4 @@ let CommunitiesCard = () => {
     )
 }
 
-export default CommunitiesCard
+export default CommunitiesPreview

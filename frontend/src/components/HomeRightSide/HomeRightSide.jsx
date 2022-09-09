@@ -1,9 +1,9 @@
-import CommunitiesCard from "../CommunitiesCard/CommunitiesCard"
+import CommunitiesPreview from "../CommunitiesPreview/CommunitiesPreview"
 
 let HomeRightSide = () => {
     return (
         <div>
-            <CommunitiesCard />
+            <CommunitiesPreview />
         </div>
     )
 }
