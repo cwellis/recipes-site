@@ -33,9 +33,9 @@ let CommunitiesPreview = () => {
       }
     
     return (
-        <div>
+        <div className='rightSide'>
 
-          <div>
+          <div className='preview'>
             {communities.length > 0 ? (
                   <div>
                       {communities.slice(0, 3).map((community) => (

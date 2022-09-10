@@ -1,7 +1,8 @@
 import {useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { toast } from 'react-toastify'
-import {createRecipe} from '../features/recipes/recipeSlice'
+import {createRecipe} from '../../features/recipes/recipeSlice'
+import './RecipeForm.css'
 
 let RecipeForm = () => {
 

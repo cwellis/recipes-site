@@ -1,4 +1,4 @@
-import RecipeItem from "../components/RecipeItem"
+import RecipeItem from "../components/RecipeItem/RecipeItem"
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"

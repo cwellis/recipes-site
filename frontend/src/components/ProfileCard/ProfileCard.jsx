@@ -8,8 +8,8 @@ const ProfileCard = () => {
     return (
         <div className="profileCard">
 
-            <div>
-                <h3>Profile Side WIP</h3>
+            <div className="profileSideHeader">
+                <h3>Profile Side</h3>
             </div>
             
             <div className="profileName">

@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import RecipeForm from '../components/RecipeForm'
+import RecipeForm from '../components/RecipeForm/RecipeForm'
 import { getRecipes } from '../features/recipes/recipeSlice'
 import { reset } from '../features/auth/authSlice'
 import Spinner from '../components/Spinner/Spinner'
