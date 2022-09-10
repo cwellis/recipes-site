@@ -5,11 +5,13 @@ import { useNavigate } from "react-router-dom"
 import { getRecipes } from "../features/recipes/recipeSlice"
 import { reset } from "../features/auth/authSlice"
 import Spinner from "../components/Spinner/Spinner"
+import { useState } from "react"
 
 let Recipes = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+  const [searchTerm, setSearchTerm] = useState('')
   
   const { user } = useSelector((state) => state.auth)
   const { recipes, isLoading, isError, message } = useSelector(
@@ -41,9 +43,22 @@ let Recipes = () => {
 
   return (
     <section className='content'>
+
+      <input 
+        type="text" 
+        placeholder="Search"
+        onChange={e => {setSearchTerm(e.target.value)}}
+      />
+
         {recipes.length > 0 ? (
           <div className='recipes'>
-            {recipes.map((recipe) => (
+            {recipes.filter((recipe) => {
+              if (searchTerm == '') {
+                return recipe
+              } else if (recipe.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+                return recipe
+              }
+            }).map((recipe) => (
               <RecipeItem key={recipe._id} recipe={recipe} />
             ))}
           </div>
