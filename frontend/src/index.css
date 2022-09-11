@@ -40,7 +40,6 @@ h3 {
   max-width: 960px;
   margin: 0 auto;
   padding: 0 20px;
-  text-align: center;
 }
 
 .white {
@@ -244,4 +243,8 @@ h3 {
 
 .viewBtn:hover {
   transform: scale(0.98);
+}
+
+.hidden {
+  display: none !important;
 }

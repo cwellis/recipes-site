@@ -1,9 +1,10 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import RecipeForm from '../components/RecipeForm'
-import { getRecipes } from '../features/recipes/recipeSlice'
-import { reset } from '../features/auth/authSlice'
+import RecipeForm from '../../components/RecipeForm/RecipeForm'
+import { getRecipes } from '../../features/recipes/recipeSlice'
+import { reset } from '../../features/auth/authSlice'
+import Spinner from '../../components/Spinner/Spinner'
 
 function Dashboard() {
   const navigate = useNavigate()
@@ -11,7 +12,13 @@ function Dashboard() {
 
   const { user } = useSelector((state) => state.auth)
 
+  const { isLoading, isError, message } = useSelector((state) => state.recipes)
+
   useEffect(() => {
+
+    if (isError) {
+      console.log(message)
+    }
 
     if (!user) {
       navigate('/login')
@@ -24,12 +31,16 @@ function Dashboard() {
     }
   }, [user, navigate, dispatch])
 
+  if (isLoading) {
+    return <Spinner />
+  }
+
 
   return (
     <>
       <section className='heading'>
         <h1>Welcome {user && user.name}</h1>
-        <p>Recipes Dashboard</p>
+        <p>Add A Recipe</p>
       </section>
 
       <RecipeForm />

@@ -1,7 +1,8 @@
 import { FaSignInAlt, FaSignOutAlt, FaUser, FaPen } from 'react-icons/fa'
-import { Link, useNavigate } from 'react-router-dom'
+import { BsFillPeopleFill } from 'react-icons/bs'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { logout, reset } from '../features/auth/authSlice'
+import { logout, reset } from '../../features/auth/authSlice'
  
 function Header() {
     
@@ -9,10 +10,12 @@ function Header() {
     const dispatch = useDispatch()
     const {user} = useSelector((state) => state.auth)
 
+    const location = useLocation()
+
     const onLogout = () => {
         dispatch(logout())
         dispatch(reset())
-        navigate('/login')
+        navigate('/register')
     }
 
   return (
@@ -36,15 +39,27 @@ function Header() {
 
                     <li>
                         <button className='btn'>
-                            <Link to ='/dashboard' className='white'>
-                                <FaPen /> Dashboard
+                            <Link to ='/communities' className='white'>
+                                <BsFillPeopleFill /> Communities
                             </Link>
                         </button>
 
                     </li>
 
                     <li>
-                        <button className='btn' onClick={onLogout}>
+                        <button className='btn'>
+                            <Link to ='/dashboard' className='white'>
+                                <FaPen /> Add Recipe
+                            </Link>
+                        </button>
+
+                    </li>
+
+                    <li>
+                        <button 
+                            className='btn' 
+                            onClick={onLogout}
+                        >
                             <FaSignOutAlt /> Logout
                         </button>
                     </li>
@@ -54,13 +69,13 @@ function Header() {
             ) : (
             <>
             <li>
-                <Link to ='/login'>
+                <Link to ='/login' className={location.pathname === "/login" ? "hidden" : "" }>
                     <FaSignInAlt /> Login
                 </Link>
             </li>
 
             <li>
-                <Link to ='/register'>
+                <Link to ='/register' className={location.pathname === "/register" ? "hidden" : "" }>
                     <FaUser /> Register
                 </Link>
             </li>

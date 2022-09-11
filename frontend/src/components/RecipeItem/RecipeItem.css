@@ -1,0 +1,15 @@
+.flexBtn {
+    display: flex;
+}
+
+.flexBtn button {
+    margin: 0 1rem 0 0;
+}
+
+.recipe {
+    margin: 1rem 0 0 0;
+}
+
+.recipeContainer {
+    display: flex;
+}

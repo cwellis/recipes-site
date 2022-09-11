@@ -1,0 +1,15 @@
+.preview {
+    display: flex;
+}
+
+.rightSide {
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 1rem;
+    overflow-x: clip;
+    background: #e6e6e6;
+    width: 75%;
+    padding: 1rem;
+}

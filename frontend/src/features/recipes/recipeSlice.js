@@ -47,6 +47,31 @@ export const getRecipes = createAsyncThunk(
   }
 )
 
+// Update user recipe
+export const updateRecipe = createAsyncThunk(
+  'recipes/update',
+  async (recipeData, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token
+      return await recipeService.updateRecipe( recipeData.id, { 
+        title: recipeData.title,
+        prepTime: recipeData.prepTime,
+        cookTime: recipeData.cookTime,
+        ingredients: recipeData.ingredients,
+        instructions: recipeData.instructions
+       }, token )
+    } catch (error) {
+      const message = 
+        (error.response && 
+          error.response.data && 
+          error.response.data.message) ||
+        error.message ||
+        error.toString()
+      return thunkAPI.rejectWithValue(message)
+    }
+  }
+)
+
 // Delete user recipe
 export const deleteRecipe = createAsyncThunk(
   'recipes/delete',
@@ -70,7 +95,7 @@ export const recipeSlice = createSlice({
   name: 'recipe',
   initialState,
   reducers: {
-    reset: (state) => initialState,
+    reset: () => initialState,
   },
   extraReducers: (builder) => {
     builder
@@ -111,6 +136,21 @@ export const recipeSlice = createSlice({
         )
       })
       .addCase(deleteRecipe.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+      })
+      .addCase(updateRecipe.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(updateRecipe.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.recipes = state.recipes.map(recipe => {
+          return recipe._id === action.payload._id ? action.payload : recipe
+        })
+      })
+      .addCase(updateRecipe.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
         state.message = action.payload
