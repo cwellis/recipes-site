@@ -1,6 +1,7 @@
 import './CommunitiesCard.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from "react"
+import { Link } from 'react-router-dom'
 import { reset } from "../../features/auth/authSlice"
 import Spinner from "../../components/Spinner/Spinner"
 import { getCommunities } from "../../features/communities/communitySlice"
@@ -50,11 +51,9 @@ let CommunitiesCard = () => {
               )}
           </div>
 
-          <div >
-            View All
-          </div>
-
-            
+          <Link to='/communities'>
+            Test
+          </Link>
 
         </div>
     )

@@ -10,6 +10,10 @@ let HomeMiddle = () => {
         (state) => state.recipes
     )
 
+    let logTitle = (e) => {
+        console.log(e)
+    }
+
 
     return (
         <div className="middleContainer">
@@ -24,7 +28,11 @@ let HomeMiddle = () => {
 
             <div className='recipesHome'>
                 {recipes.slice(0, 3).map((recipe) => (
-                    <RecipeItem key={recipe._id} recipe={recipe} />
+                    <RecipeItem 
+                        key={recipe._id} 
+                        recipe={recipe} 
+                        onClick={logTitle} 
+                    />
                 ))}
                 
                 <Link to='/recipes'>

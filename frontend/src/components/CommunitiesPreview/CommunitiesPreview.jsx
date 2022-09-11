@@ -5,6 +5,7 @@ import { reset } from "../../features/auth/authSlice"
 import Spinner from "../../components/Spinner/Spinner"
 import { getCommunities } from "../../features/communities/communitySlice"
 import CommunityItem from '../CommunityItem/CommunityItem'
+import { Link } from 'react-router-dom'
 
 
 
@@ -47,11 +48,9 @@ let CommunitiesPreview = () => {
               )}
           </div>
 
-          <div >
-            View All
-          </div>
-
-            
+          <Link to='/communities'>
+              View All
+          </Link>
 
         </div>
     )
