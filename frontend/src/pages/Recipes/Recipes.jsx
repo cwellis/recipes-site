@@ -1,10 +1,10 @@
-import RecipeItem from "../components/RecipeItem/RecipeItem"
+import RecipeItem from "../../components/RecipeItem/RecipeItem"
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { getRecipes } from "../features/recipes/recipeSlice"
-import { reset } from "../features/auth/authSlice"
-import Spinner from "../components/Spinner/Spinner"
+import { getRecipes } from "../../features/recipes/recipeSlice"
+import { reset } from "../../features/auth/authSlice"
+import Spinner from "../../components/Spinner/Spinner"
 import { useState } from "react"
 
 let Recipes = () => {

@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import RecipeForm from '../components/RecipeForm/RecipeForm'
-import { getRecipes } from '../features/recipes/recipeSlice'
-import { reset } from '../features/auth/authSlice'
-import Spinner from '../components/Spinner/Spinner'
+import RecipeForm from '../../components/RecipeForm/RecipeForm'
+import { getRecipes } from '../../features/recipes/recipeSlice'
+import { reset } from '../../features/auth/authSlice'
+import Spinner from '../../components/Spinner/Spinner'
 
 function Dashboard() {
   const navigate = useNavigate()
