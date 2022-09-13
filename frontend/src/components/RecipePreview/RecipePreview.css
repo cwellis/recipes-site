@@ -1,0 +1,13 @@
+.recipeModal {
+    display: flex;
+    flex-direction: column;
+}
+
+.recipeModal h1 {
+    display: flex;
+    justify-content: center;
+}
+
+h3 {
+    
+}

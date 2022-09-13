@@ -16,6 +16,18 @@ const ProfileCard = () => {
                 <h1>{user ? user.name : null}</h1>
             </div>
 
+            <div className="followCard">
+
+                <div>
+                    Following: 
+                </div>
+
+                <div>
+                    Followers:
+                </div>
+
+            </div>
+
         </div>
     )
 }

@@ -7,6 +7,7 @@
     overflow-x: clip;
     background: #e6e6e6;
     width: 75%;
+    padding: 1rem;
 }
 
 .profileName {
@@ -20,4 +21,9 @@
     display: flex;
     justify-content: center;
     margin: 1rem;
+}
+
+.followCard {
+    display: flex;
+    justify-content: space-around;
 }

@@ -32,7 +32,7 @@ let RecipeForm = () => {
 
   return (
     <section className="form">
-        <form onSubmit={ onSubmit }>
+        <form>
 
             <div className="form-group">
                 <label htmlFor="text">Recipe Name</label>
@@ -107,7 +107,8 @@ let RecipeForm = () => {
             <div className="form-group">
                 <button 
                     className="btn btn-block" 
-                    type='submit'
+                    type='button'
+                    onClick={onSubmit}
                 >
                     Add Recipe
                 </button>

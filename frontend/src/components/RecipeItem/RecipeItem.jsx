@@ -5,6 +5,7 @@ import RecipeModal from '../RecipeModal/RecipeModal'
 import { updateRecipe } from '../../features/recipes/recipeSlice'
 import { useLocation } from 'react-router-dom'
 import './RecipeItem.css'
+import RecipePreview from '../RecipePreview/RecipePreview'
 
 const RecipeItem = ({ recipe }) => {
   const dispatch = useDispatch()
@@ -12,6 +13,7 @@ const RecipeItem = ({ recipe }) => {
   const [title, setTitle] = useState('')
 
   const [modalOpened, setModalOpened] = useState(false)
+  const [previewOpened, setPreviewOpened] = useState(false)
 
   const handleDelete = () => {
     window.confirm("Delete?") ? dispatch(deleteRecipe(recipe._id)) : console.log('')
@@ -21,24 +23,67 @@ const RecipeItem = ({ recipe }) => {
     setModalOpened(true)
   }
 
+  const recipeOpened = () => {
+    setPreviewOpened(true)
+  }
+
   return (
 
     <div className='recipeContainer'>
       {window.location.pathname === '/' ? 
 
         <div>
-          <h2>{recipe.title}</h2>
+
+            <div onClick={recipeOpened}>
+              <h2>{recipe.title}</h2>
+            </div>
+
+            <RecipePreview
+              previewOpened={previewOpened}
+              setPreviewOpened={setPreviewOpened}
+              recipe={recipe}
+            />
+
         </div>
+
          
         : 
       
         <div className='recipe'>
-          <div>{new Date(recipe.createdAt).toLocaleString('en-US')}</div>
-          <h2>Title: {recipe.title}</h2>
-          <h2>Prep Time: {recipe.prepTime}</h2>
-          <h2>Cook Time: {recipe.cookTime}</h2>
-          <h2>Ingredients: {recipe.ingredients}</h2>
-          <h2>Instructions: {recipe.instructions}</h2>
+
+          <div>
+
+
+            <div>
+              {new Date(recipe.createdAt).toLocaleString('en-US')}
+            </div>
+
+            <span onClick={recipeOpened} className='title'>
+              {recipe.title}
+            </span>
+
+            <div className='flexBtn'>
+
+              <button
+                className='btn'
+                onClick={handleUpdate}
+              >
+                Update
+              </button>
+
+              <button 
+                onClick={handleDelete}
+                className='btn'
+              >
+                Delete
+              </button>
+
+            </div>
+
+          </div>
+
+
+
 
 
           <RecipeModal
@@ -47,23 +92,11 @@ const RecipeItem = ({ recipe }) => {
             recipe={recipe}
           />
 
-          <div className='flexBtn'>
-
-            <button
-              className='btn'
-              onClick={handleUpdate}
-            >
-              Update Recipe
-            </button>
-
-            <button 
-              onClick={handleDelete}
-              className='btn'
-            >
-              Delete Recipe
-            </button>
-
-          </div>
+            <RecipePreview
+              previewOpened={previewOpened}
+              setPreviewOpened={setPreviewOpened}
+              recipe={recipe}
+            />
 
         </div>
       }
