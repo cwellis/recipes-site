@@ -39,3 +39,11 @@
 .title:hover {
     text-decoration: none;
 }
+
+.recipeTitle {
+    width: 100px;
+    white-space: nowrap;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

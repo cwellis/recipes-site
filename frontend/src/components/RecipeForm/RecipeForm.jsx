@@ -28,6 +28,7 @@ let RecipeForm = () => {
         setIngredients('')
         setInstructions('')
     }
+    
 
 
   return (
@@ -36,7 +37,7 @@ let RecipeForm = () => {
 
             <div className="form-group">
                 <label htmlFor="text">Recipe Name</label>
-                <input 
+                <textarea
                     type="text" 
                     name='title' 
                     id='title' 
@@ -50,7 +51,7 @@ let RecipeForm = () => {
 
             <div className="form-group">
                 <label htmlFor="text">Prep Time</label>
-                <input 
+                <textarea 
                     type="prepTime" 
                     name='prepTime' 
                     id='prepTime' 
@@ -64,7 +65,7 @@ let RecipeForm = () => {
             
             <div className="form-group">
                 <label htmlFor="text">Cook Time</label>
-                <input 
+                <textarea 
                     type="text" 
                     name='cookTime' 
                     id='cookTime' 
@@ -78,7 +79,7 @@ let RecipeForm = () => {
 
             <div className="form-group">
                 <label htmlFor="text">Ingredients</label>
-                <input 
+                <textarea 
                     type="text" 
                     name='ingredients' 
                     id='title' 
@@ -92,7 +93,7 @@ let RecipeForm = () => {
 
             <div className="form-group">
                 <label htmlFor="text">Instructions</label>
-                <input 
+                <textarea 
                     type="text" 
                     name='instructions' 
                     id='instructions' 

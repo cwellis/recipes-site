@@ -51,35 +51,35 @@ const RecipeModal = ({ recipe, modalOpened, setModalOpened }) => {
         <input 
             type="text"
             name='title'
-            placeholder={title}
-            onChange={(e) => setTitle(e.target.value)} 
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
         />
 
         <input 
             type="text" 
             name='prepTime'
-            placeholder={prepTime}
+            value={prepTime}
             onChange={(e) => setPrepTime(e.target.value)} 
         />
 
         <input 
             type="text" 
             name='cookTime'
-            placeholder={cookTime}
+            value={cookTime}
             onChange={(e) => setCookTime(e.target.value)} 
         />
 
         <input 
             type="text" 
             name='ingredients'
-            placeholder={ingredients}
+            value={ingredients}
             onChange={(e) => setIngredients(e.target.value)} 
         />
 
         <input 
             type="text" 
             name='instructions'
-            placeholder={instructions}
+            value={instructions}
             onChange={(e) => setInstructions(e.target.value)} 
         />
 

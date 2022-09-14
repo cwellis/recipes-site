@@ -35,7 +35,7 @@ const RecipeItem = ({ recipe }) => {
         <div>
 
             <div onClick={recipeOpened}>
-              <h2>{recipe.title}</h2>
+              <h2 className='recipeTitle'>{recipe.title}</h2>
             </div>
 
             <RecipePreview

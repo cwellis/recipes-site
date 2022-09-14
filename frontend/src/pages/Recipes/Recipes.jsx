@@ -6,6 +6,7 @@ import { getRecipes } from "../../features/recipes/recipeSlice"
 import { reset } from "../../features/auth/authSlice"
 import Spinner from "../../components/Spinner/Spinner"
 import { useState } from "react"
+import './Recipes.css'
 
 let Recipes = () => {
   const dispatch = useDispatch()
@@ -44,7 +45,8 @@ let Recipes = () => {
   return (
     <section className='content'>
 
-      <input 
+      <input
+        className="searchBar"
         type="text" 
         placeholder="Search"
         onChange={e => {setSearchTerm(e.target.value)}}
