@@ -20,7 +20,7 @@
     overflow-x: clip;
     background: #e6e6e6;
     width: 75%;
-    padding: 1rem;
+    padding: 1rem 0;
     margin: 1rem 0 1rem 0;
 }
 
@@ -38,4 +38,19 @@
 
 .title:hover {
     text-decoration: none;
+}
+
+.recipeTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    border-bottom: 1px solid black;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 20px;
+}
+
+.recipeTitle:hover{
+    border-bottom: none;
 }

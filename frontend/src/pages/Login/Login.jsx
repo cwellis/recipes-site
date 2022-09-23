@@ -6,6 +6,9 @@ import { toast } from 'react-toastify'
 import { login, reset } from '../../features/auth/authSlice'
 
 function Login() {
+    
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const [formData, setFormData] = useState({
         email: '',
@@ -20,8 +23,6 @@ function Login() {
     
     const { email, password } = formData
 
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
 
     const { user, isError, isSuccess, message } = useSelector(
         (state) => state.auth
@@ -73,11 +74,26 @@ function Login() {
                 <form onSubmit={onSubmit}>
 
                     <div className="form-group">
-                        <input type="text" className='form-control' id='email' name='email' value={email} placeholder='Enter Email' onChange={onChange} />
+                        <input 
+                            type="text" 
+                            id='email' 
+                            name='email' 
+                            value={email} 
+                            placeholder='Enter Email' 
+                            onChange={onChange} 
+                            className='form-control' 
+                        />
                     </div>
 
                     <div className="form-group buttonIn">
-                        <input type={visible ? "password" : "text"} className='form-control' id='password' name='password' value={password} placeholder='Enter Password' onChange={onChange} />
+                        <input 
+                            id='password' 
+                            name='password' 
+                            value={password} 
+                            placeholder='Enter Password' 
+                            onChange={onChange} 
+                            type={visible ? "password" : "text"} className='form-control'
+                        />
                         <button type='button' className='viewBtn' onClick={handleVis}>
                             {visible ? "View" : "Hide"}
                         </button>
