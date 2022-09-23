@@ -28,11 +28,11 @@ let HomeMiddle = () => {
 
             <div className='recipesHome'>
                 {recipes.slice(0, 3).map((recipe) => (
-                    <RecipeItem 
-                        key={recipe._id} 
-                        recipe={recipe} 
-                        onClick={logTitle} 
-                    />
+                        <RecipeItem
+                            key={recipe._id} 
+                            recipe={recipe} 
+                            onClick={logTitle} 
+                        />
                 ))}
                 
                 <Link to='/recipes'>

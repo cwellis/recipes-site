@@ -7,6 +7,9 @@ import { register, reset } from '../../features/auth/authSlice'
 
 function Register() {
 
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -27,8 +30,6 @@ function Register() {
     
     const { name, email, password, password2 } = formData
 
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
 
     const { user, isError, isSuccess, message } = useSelector(
         (state) => state.auth
@@ -86,31 +87,34 @@ function Register() {
                     <div className="form-group">
                         <input 
                             type="text" 
-                            className='form-control' 
                             id='name' 
                             name='name' 
                             value={name} 
                             placeholder='Enter Name' 
                             onChange={onChange} 
+                            className='form-control' 
                         />
                     </div>
                     <div className="form-group">
                         <input 
                             type="text" 
-                            className='form-control' 
                             id='email' 
                             name='email' 
                             value={email} 
                             placeholder='Enter Email' 
                             onChange={onChange} 
-                        />
+                            className='form-control' 
+                            />
                     </div>
                     <div className="form-group buttonIn">
                         <input 
-                            type={visible ? "password" : "text"} className='form-control' id='password' name='password' 
                             value={password} 
                             placeholder='Enter Password' 
                             onChange={onChange} 
+                            id='password' 
+                            name='password' 
+                            type={visible ? "password" : "text"}
+                            className='form-control' 
                         />
                         <button 
                             type='button' 
@@ -123,12 +127,12 @@ function Register() {
 
                     <div className="form-group buttonIn">
                         <input 
-                            type={ confirmVis ? "password" : "text" } className='form-control' 
                             id='password2' 
                             name='password2' 
                             value={password2} 
                             placeholder='Confirm Password' 
                             onChange={onChange} 
+                            type={ confirmVis ? "password" : "text" } className='form-control' 
                         />
 
                         <button 

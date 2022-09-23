@@ -82,7 +82,7 @@ let RecipeForm = () => {
                 <textarea 
                     type="text" 
                     name='ingredients' 
-                    id='title' 
+                    id='ingredients' 
                     value={ingredients} 
                     onChange={(e) => setIngredients(e.target.value)} 
                 />
