@@ -78,7 +78,7 @@ let RecipeForm = () => {
             </div>
 
             <div className="form-group">
-                <label htmlFor="text">Ingredients</label>
+                <label htmlFor="text">Ingredients (Please enter each ingredient on it's own line)</label>
                 <textarea 
                     type="text" 
                     name='ingredients' 
@@ -92,7 +92,7 @@ let RecipeForm = () => {
             </div>
 
             <div className="form-group">
-                <label htmlFor="text">Instructions</label>
+                <label htmlFor="text">Instructions (Please enter each step on it's own line)</label>
                 <textarea 
                     type="text" 
                     name='instructions' 
