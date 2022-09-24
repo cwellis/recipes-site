@@ -55,7 +55,7 @@ let Recipes = () => {
         {recipes.length > 0 ? (
           <div className='recipes'>
             {recipes.filter((recipe) => {
-              if (searchTerm == '') {
+              if (searchTerm === '') {
                 return recipe
               } else if (recipe.title.toLowerCase().includes(searchTerm.toLowerCase())) {
                 return recipe

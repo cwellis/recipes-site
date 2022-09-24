@@ -8,6 +8,6 @@
     justify-content: center;
 }
 
-h3 {
-    
+.p_wrap {
+    white-space: pre-line;
 }
