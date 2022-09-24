@@ -21,12 +21,10 @@ const recipeSchema = new Schema(
         type: String,
         required: true
     },
-    ingredients: [
-        {
-            type: String,
-            required: true
-        }
-    ],
+    ingredients: {
+        type: String,
+        required: true
+    },
     instructions: {
         type: String,
         required: true
