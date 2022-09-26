@@ -1,4 +1,5 @@
 const asyncHandler = require('express-async-handler')
+const cloudinary = (require('../middleware/cloudinary'))
 
 const Recipe = require('../models/recipeModel')
 const User = require('../models/userModel')
@@ -21,16 +22,30 @@ const setRecipe = asyncHandler(async (req, res) => {
     throw new Error('Please enter all fields')
   }
 
-  const recipe = await Recipe.create({
-    title: req.body.title,
-    prepTime: req.body.prepTime,
-    cookTime: req.body.cookTime,
-    ingredients: req.body.ingredients,
-    instructions: req.body.instructions,
-    user: req.user.id,
-  })
+  try {
 
-  res.status(200).json(recipe)
+    const result = await cloudinary.uploader.upload(req.file.path)
+  
+    const recipe = await Recipe.create({
+      title: req.body.title,
+      prepTime: req.body.prepTime,
+      cookTime: req.body.cookTime,
+      ingredients: req.body.ingredients,
+      instructions: req.body.instructions,
+      image: result.secure_url,
+      user: req.user.id,
+    })
+  
+    console.log('post had been added')
+    res.status(200).json(recipe)
+    
+  } catch (error) {
+
+    console.log(err)
+    console.log('not working')
+    
+  }
+
 })
 
 // @desc    Update recipe

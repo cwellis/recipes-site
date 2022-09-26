@@ -58,7 +58,7 @@ export const updateRecipe = createAsyncThunk(
         prepTime: recipeData.prepTime,
         cookTime: recipeData.cookTime,
         ingredients: recipeData.ingredients,
-        instructions: recipeData.instructions
+        instructions: recipeData.instructions,
        }, token )
     } catch (error) {
       const message = 

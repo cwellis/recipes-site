@@ -49,7 +49,7 @@ const RecipePreview = ({ recipe, previewOpened, setPreviewOpened }) => {
         <span>{cookTime}</span>
 
         <h3>Ingredients:</h3>
-        <span className='p_wrap'>{ingredients.replaceAll(/\\n/g, "<br />")}</span>
+        <span className='p_wrap'>{ingredients}</span>
 
         <h3>Instructions:</h3>
         <span className='p_wrap'>{instructions}</span>
