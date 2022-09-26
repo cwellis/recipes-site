@@ -24,7 +24,7 @@ const setRecipe = asyncHandler(async (req, res) => {
 
   try {
 
-    const result = await cloudinary.uploader.upload(req.file.path)
+    // const result = await cloudinary.uploader.upload(req.files.path)
   
     const recipe = await Recipe.create({
       title: req.body.title,
@@ -32,7 +32,8 @@ const setRecipe = asyncHandler(async (req, res) => {
       cookTime: req.body.cookTime,
       ingredients: req.body.ingredients,
       instructions: req.body.instructions,
-      image: result.secure_url,
+      image: req.body.image,
+      cloudinaryId: req.body.cloudinaryId,
       user: req.user.id,
     })
   
@@ -41,7 +42,7 @@ const setRecipe = asyncHandler(async (req, res) => {
     
   } catch (error) {
 
-    console.log(err)
+    console.log(error)
     console.log('not working')
     
   }

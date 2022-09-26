@@ -1,6 +1,6 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {createRecipe} from '../../features/recipes/recipeSlice'
+import {createRecipe, reset} from '../../features/recipes/recipeSlice'
 import Axios from 'axios'
 import './RecipeForm.css'
 
@@ -14,33 +14,45 @@ let RecipeForm = () => {
     const [ingredients, setIngredients] = useState('')
     const [instructions, setInstructions] = useState('')
     const [imageSelected, setImageSelected] = useState('')
-    const [image, setImage] = useState('')
-
+    
     const { isError, message } = useSelector(
         (state) => state.auth
-    )
-
-    const onSubmit = (e) => {
-        e.preventDefault()
-
+        )
+        
+        useEffect(() => {
+            
+            if (isError) {
+                console.log(message)
+            }
+            
+            return () => {
+                dispatch(reset())
+            }
+        }, [isError, message, dispatch])
+        
+        const onSubmit = (e) => {
+            e.preventDefault()
+            
         const formData = new FormData()
         formData.append("file", imageSelected)
         formData.append("upload_preset", "h0mnibaw")
-
+        
         Axios.post(
             "https://api.cloudinary.com/v1_1/dntfarm9f/image/upload", 
             formData
-        ).then((res) => {
-        console.log(res.data.secure_url)
-        setImage(res.data.secure_url)
+            ).then((res) => {
+                console.log(res.data.secure_url)
+                const image = res.data.secure_url
+                const cloudinaryId = res.data.public_id
 
-        dispatch(createRecipe({title, prepTime, cookTime, ingredients, instructions, image}))
-        setTitle('')
-        setPrepTime('')
-        setCookTime('')
-        setIngredients('')
-        setInstructions('')
-        })        
+                dispatch(createRecipe({title, prepTime, cookTime, ingredients, instructions, image, cloudinaryId}))
+                setTitle('')
+                setPrepTime('')
+                setCookTime('')
+                setIngredients('')
+                setInstructions('')
+            })        
+
     }
     
 
@@ -122,8 +134,7 @@ let RecipeForm = () => {
                 <label htmlFor="imgUpload">Image</label>
                 <input 
                     type="file" 
-                    name='file' 
-                    value={image}
+                    name='file'
                     id='imageUpload' 
                     onChange={(e) => {
                         setImageSelected(e.target.files[0])

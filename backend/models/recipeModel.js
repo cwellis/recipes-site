@@ -33,6 +33,10 @@ const recipeSchema = new Schema(
         type: String,
         required: true
     },
+    cloudinaryId: {
+        type: String,
+        required: true
+    }
 
 }, { timestamps: true })
 
