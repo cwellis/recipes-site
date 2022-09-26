@@ -248,3 +248,7 @@ h3 {
 .hidden {
   display: none !important;
 }
+
+img {
+  width: 200px;
+}

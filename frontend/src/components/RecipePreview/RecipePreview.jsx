@@ -42,6 +42,8 @@ const RecipePreview = ({ recipe, previewOpened, setPreviewOpened }) => {
 
         <h1>{title}</h1>
 
+        <img src={recipe.image} alt="" srcset="" />
+
         <h3>Prep Time:</h3>
         <span>{prepTime}</span>
 

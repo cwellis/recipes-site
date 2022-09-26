@@ -62,6 +62,11 @@ const RecipeItem = ({ recipe }) => {
               {recipe.title}
             </span>
 
+            <div>
+              <img src={recipe.image} alt="" srcset="" />
+            </div>
+
+
             <div className='flexBtn'>
 
               <button
