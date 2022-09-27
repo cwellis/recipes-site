@@ -47,6 +47,25 @@ export const getRecipes = createAsyncThunk(
   }
 )
 
+// get recipe feed
+export const getFeed = createAsyncThunk(
+  'recipes/getFeed',
+  async (_, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token
+      return await recipeService.getFeed(token)
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString()
+      return thunkAPI.rejectWithValue(message)
+    }
+  }
+)
+
 // Update user recipe
 export const updateRecipe = createAsyncThunk(
   'recipes/update',
@@ -121,6 +140,19 @@ export const recipeSlice = createSlice({
         state.recipes = action.payload
       })
       .addCase(getRecipes.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+      })
+      .addCase(getFeed.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(getFeed.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.recipes = action.payload
+      })
+      .addCase(getFeed.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
         state.message = action.payload

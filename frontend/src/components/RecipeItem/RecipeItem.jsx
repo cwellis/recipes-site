@@ -38,6 +38,14 @@ const RecipeItem = ({ recipe }) => {
               <h2 className='recipeTitle'>{recipe.title}</h2>
             </div>
 
+            <div>
+              <img 
+                className='imgHome' 
+                src={recipe.image}
+                onClick={recipeOpened}
+              />
+            </div>
+
             <RecipePreview
               previewOpened={previewOpened}
               setPreviewOpened={setPreviewOpened}
@@ -58,7 +66,7 @@ const RecipeItem = ({ recipe }) => {
               {new Date(recipe.createdAt).toLocaleString('en-US')}
             </div>
 
-            <span onClick={recipeOpened} className='title'>
+            <span onClick={recipeOpened} className='recipeTitle title'>
               {recipe.title}
             </span>
 

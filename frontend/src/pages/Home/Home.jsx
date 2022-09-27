@@ -30,9 +30,17 @@ const Home = () => {
 
     return (
         <div className="home">
+
+          <div className='homeCard'>
             <ProfileSide />
+          </div>
+
+          <div className='homeCard'>
             <HomeMiddle />
-            <HomeRightSide />
+          </div>
+
+            {/* <HomeRightSide /> */}
+
         </div>
     )
 }

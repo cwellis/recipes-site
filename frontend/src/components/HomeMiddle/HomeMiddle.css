@@ -31,18 +31,3 @@
     margin: 1rem 0 1rem 0;
     padding: 0 2rem;
 }
-
-.recipeTitle {
-    font-size: 1rem;
-    font-weight: 600;
-    border-bottom: 1px solid black;
-    cursor: pointer;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    height: 20px;
-}
-
-.recipeTitle:hover{
-    border-bottom: none;
-}

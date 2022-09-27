@@ -13,6 +13,14 @@ const getRecipes = asyncHandler(async (req, res) => {
   res.status(200).json(recipes)
 })
 
+// @desc    Get feed
+// @route   GET /api/recipes
+const getFeed = asyncHandler(async (req, res) => {
+  const recipes = await Recipe.find().lean();
+
+  res.status(200).json(recipes)
+})
+
 // @desc    Set recipe
 // @route   POST /api/recipes
 // @access  Private
@@ -109,6 +117,7 @@ const deleteRecipe = asyncHandler(async (req, res) => {
 
 module.exports = {
   getRecipes,
+  getFeed,
   setRecipe,
   updateRecipe,
   deleteRecipe,

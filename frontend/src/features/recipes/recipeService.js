@@ -28,6 +28,19 @@ const getRecipes = async (token) => {
   return response.data
 }
 
+// get feed
+const getFeed = async (token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }
+
+  const response = await axios.get(API_URL, config)
+
+  return response.data
+}
+
 // Update user recipe
 const updateRecipe = async (recipeId, recipeData, token) => {
   const config = {
@@ -56,6 +69,7 @@ const deleteRecipe = async (recipeId, token) => {
 
 const recipeService = {
   createRecipe,
+  getFeed,
   getRecipes,
   updateRecipe,
   deleteRecipe,

@@ -8,6 +8,7 @@ import Register from './pages/Register/Register';
 import Recipes from './pages/Recipes/Recipes';
 import Home from './pages/Home/Home';
 import Communities from './pages/Communities/Communities';
+import Feed from './pages/Feed/Feed';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path='/register' element={<Register />} />
             <Route path='/recipes' element={<Recipes />} />
             <Route path='/communities' element={<Communities />} />
+            <Route path='/feed' element={<Feed />} />
           </Routes>
 
         </div>
