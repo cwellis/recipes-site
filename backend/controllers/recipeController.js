@@ -10,15 +10,21 @@ const User = require('../models/userModel')
 const getRecipes = asyncHandler(async (req, res) => {
   const recipes = await Recipe.find({ user: req.user.id })
 
+  // console.log(recipes)
   res.status(200).json(recipes)
 })
 
 // @desc    Get feed
 // @route   GET /api/recipes
 const getFeed = asyncHandler(async (req, res) => {
-  const recipeFeed = await Recipe.find();
-
-  res.status(200).json(recipeFeed)
+  try {
+    const recipes = await Recipe.find();
+  
+    console.log(recipes)
+    res.status(200).json(recipes)
+  } catch (error) {
+    console.log(error)
+  }
 })
 
 // @desc    Set recipe

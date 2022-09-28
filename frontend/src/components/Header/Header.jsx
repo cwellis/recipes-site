@@ -38,14 +38,14 @@ function Header() {
 
                     </li>
 
-                    {/* <li>
+                    <li>
                         <button className='btn'>
-                            <Link to ='/communities' className='white'>
-                                <BsFillPeopleFill /> Communities
+                            <Link to ='/feed' className='white'>
+                                <BsFillPeopleFill /> Feed
                             </Link>
                         </button>
 
-                    </li> */}
+                    </li>
 
                     <li>
                         <button className='btn'>
