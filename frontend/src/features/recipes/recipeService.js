@@ -30,6 +30,7 @@ const getRecipes = async (token) => {
 
 // get feed
 const getFeed = async (token) => {
+  
   const config = {
     headers: {
       Authorization: `Bearer ${token}`

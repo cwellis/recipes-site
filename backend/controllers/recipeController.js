@@ -16,9 +16,9 @@ const getRecipes = asyncHandler(async (req, res) => {
 // @desc    Get feed
 // @route   GET /api/recipes
 const getFeed = asyncHandler(async (req, res) => {
-  const recipes = await Recipe.find().lean();
+  const recipeFeed = await Recipe.find();
 
-  res.status(200).json(recipes)
+  res.status(200).json(recipeFeed)
 })
 
 // @desc    Set recipe
