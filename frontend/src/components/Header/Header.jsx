@@ -12,6 +12,10 @@ function Header() {
     
     const {user} = useSelector((state) => state.auth)
 
+    const handleLogout = () => {
+        window.confirm("Do you wish to logout?") ? onLogout() : console.log('')
+    }
+
 
     const onLogout = () => {
         dispatch(logout())
@@ -59,7 +63,7 @@ function Header() {
                     <li>
                         <button 
                             className='btn' 
-                            onClick={onLogout}
+                            onClick={handleLogout}
                         >
                             <FaSignOutAlt /> Logout
                         </button>

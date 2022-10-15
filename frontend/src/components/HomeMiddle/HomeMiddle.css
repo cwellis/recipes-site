@@ -12,13 +12,13 @@
     gap: 1rem;
     overflow-x: clip;
     background: #e6e6e6;
-    width: 75%;
     padding: 1rem;
 }
 
 .homeHeader {
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 .recipesHome {
@@ -27,7 +27,13 @@
     flex-direction: column;
     gap: 1rem;
     background: #e6e6e6;
-    width: 75%;
+    width: 100%;
     margin: 1rem 0 1rem 0;
     padding: 0 2rem;
 }
+
+.viewAll {
+    display: flex;
+    justify-content: center;
+}
+

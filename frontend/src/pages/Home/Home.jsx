@@ -39,8 +39,6 @@ const Home = () => {
             <HomeMiddle />
           </div>
 
-            {/* <HomeRightSide /> */}
-
         </div>
     )
 }
