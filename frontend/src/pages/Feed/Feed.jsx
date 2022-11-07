@@ -54,7 +54,7 @@ const Feed = () => {
                     return recipe
                 }
                 }).map((recipe) => (
-                <RecipeItem key={recipe._id} recipe={recipe} />
+                <RecipeItem key={recipe} recipe={recipe} />
                 ))}
             </div>
             ) : (

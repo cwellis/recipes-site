@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { deleteRecipe } from '../../features/recipes/recipeSlice'
 import RecipeModal from '../RecipeModal/RecipeModal'
 import { updateRecipe } from '../../features/recipes/recipeSlice'
@@ -11,6 +11,8 @@ const RecipeItem = ({ recipe }) => {
   const dispatch = useDispatch()
 
   const [title, setTitle] = useState('')
+
+  const { user } = useSelector((state) => state.auth)
 
   const [modalOpened, setModalOpened] = useState(false)
   const [previewOpened, setPreviewOpened] = useState(false)
@@ -71,14 +73,20 @@ const RecipeItem = ({ recipe }) => {
             </span>
 
             <div>
-              <img src={recipe.image} alt="" srcset="" />
+              <img
+                onClick={recipeOpened}
+                className='imgClick'
+                src={recipe.image} 
+                alt="" 
+                srcset="" 
+              />
             </div>
 
 
             <div className='flexBtn'>
 
               <button
-                className='btn'
+                className={ recipe.user.toString() !== user._id ? `hidden` : `btn` }
                 onClick={handleUpdate}
               >
                 Update
@@ -86,7 +94,7 @@ const RecipeItem = ({ recipe }) => {
 
               <button 
                 onClick={handleDelete}
-                className='btn'
+                className={ recipe.user.toString() !== user._id ? `hidden` : `btn` }
               >
                 Delete
               </button>

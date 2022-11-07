@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 const API_URL = '/api/recipes/'
+const FEED_URL = '/api/recipes/feed'
 
 // Create new recipe
 const createRecipe = async (recipeData, token) => {
@@ -37,7 +38,7 @@ const getFeed = async (token) => {
     }
   }
 
-  const response = await axios.get(API_URL, config)
+  const response = await axios.get(FEED_URL, config)
 
   return response.data
 }
