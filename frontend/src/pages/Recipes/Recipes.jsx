@@ -45,6 +45,8 @@ let Recipes = () => {
   return (
     <section className='content'>
 
+      <h1>My Recipes</h1>
+
       <input
         className="searchBar"
         type="text" 
@@ -65,7 +67,9 @@ let Recipes = () => {
             ))}
           </div>
         ) : (
-          <h3>You have not set any recipes</h3>
+          <div className="content">
+            <h3>You have not set any recipes</h3>
+          </div>
         )}
     </section>
   )

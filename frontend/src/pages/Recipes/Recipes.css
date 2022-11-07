@@ -6,3 +6,8 @@
     margin-bottom: 10px;
     font-family: inherit;
 }
+
+.content h1, .content h3 {
+    display: flex;
+    justify-content: center;
+}

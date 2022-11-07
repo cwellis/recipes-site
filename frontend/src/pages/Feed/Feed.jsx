@@ -6,6 +6,7 @@ import { getFeed } from "../../features/recipes/recipeSlice"
 import { reset } from "../../features/auth/authSlice"
 import Spinner from "../../components/Spinner/Spinner"
 import { useState } from "react"
+import './Feed.css'
 
 const Feed = () => {
 
@@ -37,6 +38,10 @@ const Feed = () => {
 
     return (
         <section className='content'>
+
+            <h1 className="feed">
+                Website Feed
+            </h1>
 
         <input
             className="searchBar"
