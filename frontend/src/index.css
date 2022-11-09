@@ -86,7 +86,9 @@ h3 {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 50px;
-  padding: 0 20px;
+  width: 70%;
+  display: flex;
+  justify-content: center;
 }
 
 .heading p {

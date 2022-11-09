@@ -1,0 +1,8 @@
+.register-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.register-container {
+    width: 50%;
+}

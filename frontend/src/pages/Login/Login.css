@@ -1,0 +1,8 @@
+.right-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.login-container {
+    width: 50%;
+}
