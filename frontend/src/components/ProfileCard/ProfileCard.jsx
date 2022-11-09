@@ -9,7 +9,7 @@ const ProfileCard = () => {
         <div className="profileCard">
         
             <div className="profileName">
-                <h1>{user ? user.name : null}</h1>
+                <h1>Welcome, {user ? user.name : null}</h1>
             </div>
 
         </div>

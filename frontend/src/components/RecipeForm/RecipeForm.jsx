@@ -57,7 +57,7 @@ let RecipeForm = () => {
     
 
   return (
-    <section className="form">
+    <section className="recipe-form">
         <form encType='multipart/form-data'>
 
             <div className="form-group">
