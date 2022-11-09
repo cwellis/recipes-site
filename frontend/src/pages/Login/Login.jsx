@@ -63,9 +63,9 @@ function Login() {
     return (
         <div className='login-wrapper'>
 
-            <div className="left-wrapper">
-                Recipe Site
-            </div>
+            <h1 className="left-wrapper">
+                Recipe Buddies
+            </h1>
 
             <div className='right-wrapper'>
 
