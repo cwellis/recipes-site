@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import './HomeScreen.css'
 import RecipeForm from '../RecipeForm/RecipeForm'
-import RecipeItem from '../RecipeItem/RecipeItem'
+import RecipeItemHome from '../RecipeItemHome/RecipeItemHome'
 import { Link } from 'react-router-dom'
 
 
@@ -27,15 +27,16 @@ const HomeScreen = () => {
 
                 <div className='recipes-home'>
                 {recipes.slice(0, 3).map((recipe) => (
-                        <RecipeItem
+                        <RecipeItemHome
                             key={recipe._id} 
                             recipe={recipe} 
                             onClick={logTitle} 
+                            className='recipeTest'
                         />
                 ))}
                 
 
-            </div>
+                </div>
 
                 <div className='viewAll'>
                     <Link 
