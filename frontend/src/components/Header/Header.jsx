@@ -51,14 +51,14 @@ function Header() {
 
                     </li>
 
-                    <li>
+                    {/* <li>
                         <button className='btn'>
                             <Link to ='/dashboard' className='white'>
                                 <FaPen /> Add Recipe
                             </Link>
                         </button>
 
-                    </li>
+                    </li> */}
 
                     <li>
                         <button 
