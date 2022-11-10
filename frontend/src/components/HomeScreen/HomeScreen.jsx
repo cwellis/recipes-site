@@ -34,6 +34,9 @@ const HomeScreen = () => {
                         />
                 ))}
                 
+
+            </div>
+
                 <div className='viewAll'>
                     <Link 
                         to='/recipes'
@@ -41,8 +44,6 @@ const HomeScreen = () => {
                         View All
                     </Link>
                 </div>
-
-            </div>
 
             </div>
 
