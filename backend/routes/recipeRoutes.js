@@ -18,6 +18,6 @@ router.route('/').get(protect, getRecipes).post(protect, upload.single("file"), 
 router.route('/feed').get(protect, getFeed)
 
 // /recipes/:id
-router.route('/:id').delete(protect, deleteRecipe).put(protect, updateRecipe)
+router.route('/:id').delete(protect, deleteRecipe).put(protect, updateRecipe).put(likeRecipe)
 
 module.exports = router

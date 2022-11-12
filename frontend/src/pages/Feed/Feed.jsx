@@ -40,7 +40,7 @@ const Feed = () => {
         <section className='content'>
 
             <h1 className="feed">
-                Website Feed
+                Recipes Feed
             </h1>
 
         <input

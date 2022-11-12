@@ -47,6 +47,7 @@ const setRecipe = asyncHandler(async (req, res) => {
       ingredients: req.body.ingredients,
       instructions: req.body.instructions,
       image: req.body.image,
+      likes: 0,
       cloudinaryId: req.body.cloudinaryId,
       user: req.user.id,
     })
@@ -61,6 +62,22 @@ const setRecipe = asyncHandler(async (req, res) => {
     
   }
 
+})
+
+// @desc like recipe
+// @route PUT /api/recipes/:id
+// @access Private
+const likeRecipe = asyncHandler(async (req, res) => {
+  try {
+    await Recipe.findOneAndUpdate(
+      { _id: req.params.id },
+      { $inc: {likes:1} }
+    );
+    console.log('Likes + 1');
+    res.redirect(`/recipes/${req.params.id}`)
+  } catch(err) {
+    console.log(err)
+  }
 })
 
 // @desc    Update recipe
@@ -127,4 +144,5 @@ module.exports = {
   setRecipe,
   updateRecipe,
   deleteRecipe,
+  likeRecipe
 }
