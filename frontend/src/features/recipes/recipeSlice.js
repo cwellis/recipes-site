@@ -66,6 +66,27 @@ export const getFeed = createAsyncThunk(
   }
 )
 
+// Like user recipe
+export const likeRecipe = createAsyncThunk(
+  'recipes/update',
+  async(recipeData, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token
+      return await recipeService.likeRecipe(recipeData.id, {
+        likes: recipeData.likes += 1,
+      }, token )
+    } catch (error) {
+      const message = 
+      (error.response && 
+        error.response.data && 
+        error.response.data.message) ||
+      error.message ||
+      error.toString()
+    return thunkAPI.rejectWithValue(message)
+    }
+  }
+)
+
 // Update user recipe
 export const updateRecipe = createAsyncThunk(
   'recipes/update',

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteRecipe } from '../../features/recipes/recipeSlice'
+import { deleteRecipe, likeRecipe } from '../../features/recipes/recipeSlice'
 import RecipeModal from '../RecipeModal/RecipeModal'
 import { updateRecipe } from '../../features/recipes/recipeSlice'
 import { useLocation } from 'react-router-dom'
@@ -19,6 +19,10 @@ const RecipeItem = ({ recipe }) => {
 
   const handleDelete = () => {
     window.confirm("Delete?") ? dispatch(deleteRecipe(recipe._id)) : console.log('')
+  }
+
+  const likeRecipe = () => {
+    dispatch(likeRecipe(recipe._id))
   }
 
   const handleUpdate = () => {
@@ -99,6 +103,18 @@ const RecipeItem = ({ recipe }) => {
                 Delete
               </button>
 
+            </div>
+
+            <div className='flexBtn'>
+              <button 
+                className='btn'
+                onClick={likeRecipe}
+              >
+                Like
+              </button>
+              <div>
+                {recipe.likes}
+              </div>
             </div>
 
           </div>

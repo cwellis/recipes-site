@@ -36,6 +36,9 @@ const recipeSchema = new Schema(
     cloudinaryId: {
         type: String,
         required: true
+    },
+    likes: {
+        type: Number
     }
 
 }, { timestamps: true })

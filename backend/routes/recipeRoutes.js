@@ -7,6 +7,7 @@ const {
   setRecipe,
   updateRecipe,
   deleteRecipe,
+  likeRecipe
 } = require('../controllers/recipeController')
 
 const { protect } = require('../middleware/authMiddleware')
