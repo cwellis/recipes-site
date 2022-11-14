@@ -5,6 +5,7 @@ import { likeRecipe } from '../../features/recipes/recipeSlice'
 import RecipeModal from '../RecipeModal/RecipeModal'
 import { updateRecipe } from '../../features/recipes/recipeSlice'
 import { useLocation } from 'react-router-dom'
+import {AiOutlineHeart, AiFillHeart} from 'react-icons/ai'
 import './RecipeItem.css'
 import RecipePreview from '../RecipePreview/RecipePreview'
 
@@ -111,7 +112,11 @@ const RecipeItem = ({ recipe }) => {
                 className='btn'
                 onClick={handleLike}
               >
-                Like
+                {recipe.likes?.includes(user._id) 
+                ? 
+                <AiFillHeart /> 
+                : 
+                <AiOutlineHeart />}
               </button>
               <div>
                 {recipe.likes}
