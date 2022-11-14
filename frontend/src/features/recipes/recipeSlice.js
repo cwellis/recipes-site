@@ -73,7 +73,7 @@ export const likeRecipe = createAsyncThunk(
     try {
       const token = thunkAPI.getState().auth.user.token
       return await recipeService.likeRecipe(recipeData.id, {
-        likes: recipeData.likes += 1,
+        likes: recipeData.likes++,
       }, token )
     } catch (error) {
       const message = 

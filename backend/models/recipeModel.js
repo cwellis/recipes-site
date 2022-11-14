@@ -38,9 +38,12 @@ const recipeSchema = new Schema(
         required: true
     },
     likes: {
-        type: Number
+        type: Number,
+        required: true
     }
 
 }, { timestamps: true })
 
 module.exports = mongoose.model('Recipe', recipeSchema)
+
+// test
