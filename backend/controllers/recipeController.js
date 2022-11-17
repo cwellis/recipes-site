@@ -47,7 +47,7 @@ const setRecipe = asyncHandler(async (req, res) => {
       ingredients: req.body.ingredients,
       instructions: req.body.instructions,
       image: req.body.image,
-      likes: 0,
+      likes: [],
       cloudinaryId: req.body.cloudinaryId,
       user: req.user.id,
     })
@@ -68,15 +68,16 @@ const setRecipe = asyncHandler(async (req, res) => {
 // @route PUT /api/recipes/:id
 // @access Private
 const likeRecipe = asyncHandler(async (req, res) => {
+  const id = req.user._id;
+  const recipeId = req.params._id;
   try {
-    await Recipe.findOneAndUpdate(
-      { _id: req.params.id },
-      { $inc: {likes:1} }
-    );
-    console.log('Likes + 1');
-    res.redirect(`/recipes/${req.params.id}`)
-  } catch(err) {
-    console.log(err)
+    await Recipe.findByIdAndUpdate(recipeId,{
+      $addToSet:{likes:id},
+      $pull:{dislikes:id}
+    })
+    res.status(200).json("The video has been liked.")
+  } catch (err) {
+    next(err);
   }
 })
 
