@@ -24,7 +24,7 @@ const RecipeItem = ({ recipe }) => {
   }
 
   const handleLike = () => {
-    dispatch(likeRecipe(recipe.likes))
+    dispatch(likeRecipe())
   }
 
   const handleUpdate = () => {
@@ -107,7 +107,7 @@ const RecipeItem = ({ recipe }) => {
 
             </div>
 
-            <div className='flexBtn'>
+            {/* <div className='flexBtn'>
               <button 
                 className='btn'
                 onClick={handleLike}
@@ -119,9 +119,9 @@ const RecipeItem = ({ recipe }) => {
                 <AiOutlineHeart />}
               </button>
               <div>
-                {recipe.likes}
+                {recipe.likes.length}
               </div>
-            </div>
+            </div> */}
 
           </div>
 

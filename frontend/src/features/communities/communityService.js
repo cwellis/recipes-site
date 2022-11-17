@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = '/api/communities/'
+const API_URL = 'https://cwellis-recipe-site-backend.onrender.com/api/communities/'
 
 // Create new community
 const createCommunity = async (communityData, token) => {

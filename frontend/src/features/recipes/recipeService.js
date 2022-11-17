@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const API_URL = '/api/recipes/'
-const FEED_URL = '/api/recipes/feed'
+const API_URL = 'https://cwellis-recipe-site-backend.onrender.com/api/recipes/'
+const FEED_URL = 'https://cwellis-recipe-site-backend.onrender.com/api/recipes/feed'
 
 // Create new recipe
 const createRecipe = async (recipeData, token) => {
@@ -56,19 +56,6 @@ const updateRecipe = async (recipeId, recipeData, token) => {
   return response.data
 }
 
-// like user recipe
-const likeRecipe = async (recipeId, recipeData, token) => {
-  const config = {
-    headers: {
-      Authoritzation: `Bearer ${token}`,
-    },
-  }
-
-  const response = await axios.put(API_URL + recipeId, recipeData, config)
-
-  return response.data
-}
-
 // Delete user recipe
 const deleteRecipe = async (recipeId, token) => {
   const config = {
@@ -88,7 +75,6 @@ const recipeService = {
   getRecipes,
   updateRecipe,
   deleteRecipe,
-  likeRecipe
 }
 
 export default recipeService
