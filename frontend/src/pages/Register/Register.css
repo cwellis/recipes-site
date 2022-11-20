@@ -1,0 +1,15 @@
+.right-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
+
+.register-container {
+    width: 80%;
+}
+
+.register-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}

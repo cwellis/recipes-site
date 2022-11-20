@@ -7,6 +7,7 @@ import ProfileSide from "../../components/ProfileSide/ProfileSide"
 import HomeMiddle from '../../components/HomeMiddle/HomeMiddle'
 import HomeRightSide from '../../components/HomeRightSide/HomeRightSide'
 import './Home.css'
+import HomeScreen from '../../components/HomeScreen/HomeScreen'
 
 const Home = () => {
 
@@ -30,9 +31,17 @@ const Home = () => {
 
     return (
         <div className="home">
+
+          {/* <div className='homeCard'>
             <ProfileSide />
+          </div>
+
+          <div className='homeCard'>
             <HomeMiddle />
-            <HomeRightSide />
+          </div> */}
+
+          <HomeScreen />
+
         </div>
     )
 }

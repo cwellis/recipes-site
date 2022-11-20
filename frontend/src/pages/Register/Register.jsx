@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { FaUser } from 'react-icons/fa'
 import { register, reset } from '../../features/auth/authSlice'
+import './Register.css'
 
 function Register() {
 
@@ -72,87 +73,101 @@ function Register() {
     }
 
     return (
-        <>
-            <section className="heading">
-                <h1>
-                    <FaUser /> Register
-                </h1>
-                <p>
-                    Please Create an Account
-                </p>
-            </section>
+        <div className='register-wrapper'>
 
-            <section className="form">
-                <form onSubmit={onSubmit}>
-                    <div className="form-group">
-                        <input 
-                            type="text" 
-                            id='name' 
-                            name='name' 
-                            value={name} 
-                            placeholder='Enter Name' 
-                            onChange={onChange} 
-                            className='form-control' 
-                        />
-                    </div>
-                    <div className="form-group">
-                        <input 
-                            type="text" 
-                            id='email' 
-                            name='email' 
-                            value={email} 
-                            placeholder='Enter Email' 
-                            onChange={onChange} 
-                            className='form-control' 
-                            />
-                    </div>
-                    <div className="form-group buttonIn">
-                        <input 
-                            value={password} 
-                            placeholder='Enter Password' 
-                            onChange={onChange} 
-                            id='password' 
-                            name='password' 
-                            type={visible ? "password" : "text"}
-                            className='form-control' 
-                        />
-                        <button 
-                            type='button' 
-                            className='viewBtn' 
-                            onClick={handleVis}
-                        >
-                            {visible ? "View" : "Hide"}
-                        </button>
-                    </div>
+            <h1 className="left-wrapper">
+                Recipe Buddies
+            </h1>
 
-                    <div className="form-group buttonIn">
-                        <input 
-                            id='password2' 
-                            name='password2' 
-                            value={password2} 
-                            placeholder='Confirm Password' 
-                            onChange={onChange} 
-                            type={ confirmVis ? "password" : "text" } className='form-control' 
-                        />
+            <div className="right-wrapper">
 
-                        <button 
-                            type='button' 
-                            className='viewBtn' 
-                            onClick={handleConfirmVis}
-                        >
-                            { confirmVis ? "View" : "Hide" }
-                        </button>
-                    </div>
-                    <div className="form-group">
-                        <button 
-                            type="submit" 
-                            className='btn btn-block'>
-                                Submit
-                            </button>
-                    </div>
-                </form>
-            </section>
-        </>
+
+                <div className="register-container">
+
+                    <section className="register-heading">
+                        <div>
+                            <h1>
+                                <FaUser /> Register
+                            </h1>
+                            <p>
+                                Please Create an Account
+                            </p>
+                        </div>
+                    </section>
+
+                    <section className="register-form">
+                        <form onSubmit={onSubmit}>
+                            <div className="form-group">
+                                <input 
+                                    type="text" 
+                                    id='name' 
+                                    name='name' 
+                                    value={name} 
+                                    placeholder='Enter Name' 
+                                    onChange={onChange} 
+                                    className='form-control' 
+                                />
+                            </div>
+                            <div className="form-group">
+                                <input 
+                                    type="text" 
+                                    id='email' 
+                                    name='email' 
+                                    value={email} 
+                                    placeholder='Enter Email' 
+                                    onChange={onChange} 
+                                    className='form-control' 
+                                    />
+                            </div>
+                            <div className="form-group buttonIn">
+                                <input 
+                                    value={password} 
+                                    placeholder='Enter Password' 
+                                    onChange={onChange} 
+                                    id='password' 
+                                    name='password' 
+                                    type={visible ? "password" : "text"}
+                                    className='form-control' 
+                                    />
+                                <button 
+                                    type='button' 
+                                    className='viewBtn' 
+                                    onClick={handleVis}
+                                    >
+                                    {visible ? "View" : "Hide"}
+                                </button>
+                            </div>
+
+                            <div className="form-group buttonIn">
+                                <input 
+                                    id='password2' 
+                                    name='password2' 
+                                    value={password2} 
+                                    placeholder='Confirm Password' 
+                                    onChange={onChange} 
+                                    type={ confirmVis ? "password" : "text" } className='form-control' 
+                                    />
+
+                                <button 
+                                    type='button' 
+                                    className='viewBtn' 
+                                    onClick={handleConfirmVis}
+                                    >
+                                    { confirmVis ? "View" : "Hide" }
+                                </button>
+                            </div>
+                            <div className="form-group">
+                                <button 
+                                    type="submit" 
+                                    className='btn btn-block'>
+                                        Submit
+                                    </button>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </div>
     )
 }
 

@@ -40,19 +40,24 @@ const RecipePreview = ({ recipe, previewOpened, setPreviewOpened }) => {
 
       <div className='recipeModal'>
 
-        <h1>{title}</h1>
+        <div>
+          <h1>{title}</h1>
 
-        <h3>Prep Time:</h3>
-        <span>{prepTime}</span>
+          <img src={recipe.image} alt="" srcset="" />
 
-        <h3>Cook Time:</h3>
-        <span>{cookTime}</span>
+          <h3>Prep Time:</h3>
+          <span>{prepTime}</span>
 
-        <h3>Ingredients:</h3>
-        <span className='p_wrap'>{ingredients.replaceAll(/\\n/g, "<br />")}</span>
+          <h3>Cook Time:</h3>
+          <span>{cookTime}</span>
 
-        <h3>Instructions:</h3>
-        <span className='p_wrap'>{instructions}</span>
+          <h3>Ingredients:</h3>
+          <span className='p_wrap'>{ingredients}</span>
+
+          <h3>Instructions:</h3>
+          <span className='p_wrap'>{instructions}</span>
+        </div>
+
 
 
       </div>

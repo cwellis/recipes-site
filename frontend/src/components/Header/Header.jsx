@@ -12,6 +12,10 @@ function Header() {
     
     const {user} = useSelector((state) => state.auth)
 
+    const handleLogout = () => {
+        window.confirm("Do you wish to logout?") ? onLogout() : console.log('')
+    }
+
 
     const onLogout = () => {
         dispatch(logout())
@@ -21,9 +25,9 @@ function Header() {
 
   return (
     <header className='header'>
-        <div className='logo'>
+        <h1 className='logo'>
             <Link to='/'>Recipe Site</Link>
-        </div>
+        </h1>
 
         <ul>
             {user ? (
@@ -32,7 +36,7 @@ function Header() {
                     <li>
                         <button className='btn'>
                             <Link to ='/recipes' className='white'>
-                                <FaPen /> Recipes
+                                <FaPen /> My Recipes
                             </Link>
                         </button>
 
@@ -40,26 +44,26 @@ function Header() {
 
                     <li>
                         <button className='btn'>
-                            <Link to ='/communities' className='white'>
-                                <BsFillPeopleFill /> Communities
+                            <Link to ='/feed' className='white'>
+                                <BsFillPeopleFill /> Feed
                             </Link>
                         </button>
 
                     </li>
 
-                    <li>
+                    {/* <li>
                         <button className='btn'>
                             <Link to ='/dashboard' className='white'>
                                 <FaPen /> Add Recipe
                             </Link>
                         </button>
 
-                    </li>
+                    </li> */}
 
                     <li>
                         <button 
                             className='btn' 
-                            onClick={onLogout}
+                            onClick={handleLogout}
                         >
                             <FaSignOutAlt /> Logout
                         </button>

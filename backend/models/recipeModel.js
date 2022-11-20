@@ -28,8 +28,22 @@ const recipeSchema = new Schema(
     instructions: {
         type: String,
         required: true
+    },
+    image: {
+        type: String,
+        required: true
+    },
+    cloudinaryId: {
+        type: String,
+        required: true
+    },
+    likes: {
+        type: [String],
+        default: [],
     }
 
 }, { timestamps: true })
 
 module.exports = mongoose.model('Recipe', recipeSchema)
+
+// test

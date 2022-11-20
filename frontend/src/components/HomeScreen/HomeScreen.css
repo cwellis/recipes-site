@@ -1,0 +1,28 @@
+.home-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.h-left, .h-right {
+    width: 50%;
+}
+
+.h-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.h-left>.recipes-home {
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #e6e6e6;
+    width: 80%;
+}
+
+.recipes-home img {
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+}

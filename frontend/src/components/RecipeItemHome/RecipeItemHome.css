@@ -1,0 +1,63 @@
+.flexBtn {
+    display: flex;
+    margin: 1rem 0;
+}
+
+.flexBtn button {
+    margin: 0 1rem 0 0;
+}
+
+.recipe {
+    margin: 1rem 0 0 0;
+}
+
+.recipe-home {
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    gap: 1rem;
+    overflow-x: clip;
+    background: #e6e6e6;
+    width: 80%;
+    padding: 1rem 0;
+    margin: 1rem 0 1rem 0;
+}
+
+.recipeBtn {
+    height: 1rem;
+    width: rem;
+}
+
+
+.title:hover {
+    text-decoration: none;
+}
+
+.recipeTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: underline;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 20px;
+}
+
+.title {
+    font-size: 2rem;
+}
+
+.recipeTitle:hover{
+    text-decoration: none;
+}
+
+.imgHome {
+    width: 100%;
+}
+
+.imgClick {
+    cursor: pointer;
+}

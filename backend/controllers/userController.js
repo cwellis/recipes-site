@@ -2,6 +2,9 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const asyncHandler = require('express-async-handler')
 const User = require('../models/userModel')
+const Recipe = require('../models/recipeModel')
+
+
 
 // @desc    Register new user
 // @route   POST /api/users
@@ -46,6 +49,10 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 })
 
+
+
+
+
 // @desc    Authenticate a user
 // @route   POST /api/users/login
 // @access  Public
@@ -68,6 +75,10 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 })
 
+
+
+
+
 // @desc    Get user data
 // @route   GET /api/users/me
 // @access  Private
@@ -82,8 +93,27 @@ const generateToken = (id) => {
   })
 }
 
+
+
+// like a recipe
+const like = async (req, res, next) => {
+  const id = req.user._id;
+  const recipeId = req.params._id;
+  try {
+    await Recipe.findByIdAndUpdate(recipeId,{
+      $addToSet:{likes:id},
+    })
+    res.status(200).json("The video has been liked.")
+  } catch (err) {
+    next(err);
+  }
+};
+
+
+
 module.exports = {
   registerUser,
   loginUser,
   getMe,
+  like
 }

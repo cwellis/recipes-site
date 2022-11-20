@@ -47,6 +47,46 @@ export const getRecipes = createAsyncThunk(
   }
 )
 
+// get recipe feed
+export const getFeed = createAsyncThunk(
+  'recipes/getFeed',
+  async (_, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token
+      return await recipeService.getFeed(token)
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString()
+      return thunkAPI.rejectWithValue(message)
+    }
+  }
+)
+
+// Like user recipe
+export const likeRecipe = createAsyncThunk(
+  'recipes/update',
+  async(recipeData, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token
+      return await recipeService.likeRecipe(recipeData.id, {
+        likes: recipeData.likes++,
+      }, token )
+    } catch (error) {
+      const message = 
+      (error.response && 
+        error.response.data && 
+        error.response.data.message) ||
+      error.message ||
+      error.toString()
+    return thunkAPI.rejectWithValue(message)
+    }
+  }
+)
+
 // Update user recipe
 export const updateRecipe = createAsyncThunk(
   'recipes/update',
@@ -58,7 +98,7 @@ export const updateRecipe = createAsyncThunk(
         prepTime: recipeData.prepTime,
         cookTime: recipeData.cookTime,
         ingredients: recipeData.ingredients,
-        instructions: recipeData.instructions
+        instructions: recipeData.instructions,
        }, token )
     } catch (error) {
       const message = 
@@ -121,6 +161,19 @@ export const recipeSlice = createSlice({
         state.recipes = action.payload
       })
       .addCase(getRecipes.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+      })
+      .addCase(getFeed.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(getFeed.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.recipes = action.payload
+      })
+      .addCase(getFeed.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
         state.message = action.payload

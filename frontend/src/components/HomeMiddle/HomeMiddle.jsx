@@ -18,13 +18,9 @@ let HomeMiddle = () => {
     return (
         <div className="middleContainer">
 
-            <div className='homeCard'>
-
-                <div className='homeHeader'>
-                    Home Middle
-                </div>
-
-            </div>
+            <h1 className='homeHeader'>
+                Recent Recipes
+            </h1>
 
             <div className='recipesHome'>
                 {recipes.slice(0, 3).map((recipe) => (
@@ -35,9 +31,13 @@ let HomeMiddle = () => {
                         />
                 ))}
                 
-                <Link to='/recipes'>
-                    View All
-                </Link>
+                <div className='viewAll'>
+                    <Link 
+                        to='/recipes'
+                    >
+                        View All
+                    </Link>
+                </div>
 
             </div>
 

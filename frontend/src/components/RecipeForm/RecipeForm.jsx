@@ -1,7 +1,7 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import { toast } from 'react-toastify'
-import {createRecipe} from '../../features/recipes/recipeSlice'
+import {createRecipe, reset} from '../../features/recipes/recipeSlice'
+import Axios from 'axios'
 import './RecipeForm.css'
 
 let RecipeForm = () => {
@@ -13,27 +13,52 @@ let RecipeForm = () => {
     const [cookTime, setCookTime] = useState('')
     const [ingredients, setIngredients] = useState('')
     const [instructions, setInstructions] = useState('')
-
+    const [imageSelected, setImageSelected] = useState('')
+    
     const { isError, message } = useSelector(
         (state) => state.auth
-    )
+        )
+        
+        useEffect(() => {
+            
+            if (isError) {
+                console.log(message)
+            }
+            
+            return () => {
+                dispatch(reset())
+            }
+        }, [isError, message, dispatch])
+        
+        const onSubmit = (e) => {
+            e.preventDefault()
+            
+        const formData = new FormData()
+        formData.append("file", imageSelected)
+        formData.append("upload_preset", "h0mnibaw")
+        
+        Axios.post(
+            "https://api.cloudinary.com/v1_1/dntfarm9f/image/upload", 
+            formData
+            ).then((res) => {
+                console.log(res.data.secure_url)
+                const image = res.data.secure_url
+                const cloudinaryId = res.data.public_id
 
-    const onSubmit = (e) => {
-        e.preventDefault()
+                dispatch(createRecipe({title, prepTime, cookTime, ingredients, instructions, image, cloudinaryId}))
+                setTitle('')
+                setPrepTime('')
+                setCookTime('')
+                setIngredients('')
+                setInstructions('')
+            })        
 
-        dispatch(createRecipe({title, prepTime, cookTime, ingredients, instructions}))
-        setTitle('')
-        setPrepTime('')
-        setCookTime('')
-        setIngredients('')
-        setInstructions('')
     }
     
 
-
   return (
-    <section className="form">
-        <form>
+    <section className="recipe-form">
+        <form encType='multipart/form-data'>
 
             <div className="form-group">
                 <label htmlFor="text">Recipe Name</label>
@@ -99,6 +124,21 @@ let RecipeForm = () => {
                     id='instructions' 
                     value={instructions} 
                     onChange={(e) => setInstructions(e.target.value)} 
+                />
+                <div className='hidden'>
+                    Please Enter Instructions
+                </div>
+            </div>
+
+            <div className="form-group">
+                <label htmlFor="imgUpload">Image</label>
+                <input 
+                    type="file" 
+                    name='file'
+                    id='imageUpload' 
+                    onChange={(e) => {
+                        setImageSelected(e.target.files[0])
+                    }}
                 />
                 <div className='hidden'>
                     Please Enter Instructions
